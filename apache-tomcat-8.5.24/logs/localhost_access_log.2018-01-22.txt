@@ -577,3 +577,7 @@
 0:0:0:0:0:0:0:1 - - [22/Jan/2018:21:50:52 -0800] "GET /Project1/servlet/MovieList HTTP/1.1" 200 4899
 0:0:0:0:0:0:0:1 - - [22/Jan/2018:21:51:24 -0800] "GET /Project1/servlet/MovieList HTTP/1.1" 200 4899
 0:0:0:0:0:0:0:1 - - [22/Jan/2018:21:51:45 -0800] "GET /Project1/servlet/MovieList HTTP/1.1" 200 4915
+0:0:0:0:0:0:0:1 - - [22/Jan/2018:22:20:41 -0800] "GET /Project1/servlet/MovieList HTTP/1.1" 200 4915
+0:0:0:0:0:0:0:1 - - [22/Jan/2018:23:06:18 -0800] "GET /Project1/ HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [22/Jan/2018:23:06:18 -0800] "GET /Project1/styles.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [22/Jan/2018:23:06:27 -0800] "GET /Project1/servlet/MovieList HTTP/1.1" 200 4915
