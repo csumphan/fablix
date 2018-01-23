@@ -80,3 +80,237 @@ java.net.ConnectException: No route to host (connect failed)
 
 !ENTRY org.eclipse.oomph.setup.ui 1 0 2018-01-21 20:23:39.174
 !MESSAGE Setup tasks were performed during startup. See '/Applications/Eclipse.app/Contents/Eclipse/configuration/org.eclipse.oomph.setup/setup.log' for details
+!SESSION 2018-01-22 13:04:32.170 -----------------------------------------------
+eclipse.buildId=4.7.2.M20171130-0510
+java.version=1.8.0_144
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product -keyring /Users/eltonxue/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.jee.product -keyring /Users/eltonxue/.eclipse_keyring
+
+!ENTRY org.eclipse.core.net 1 0 2018-01-22 13:05:39.379
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2018-01-22 13:05:49.429
+!MESSAGE Removing part descriptor with the 'com.python.pydev.ui.hierarchy.PyHierarchyView' id and the 'Hierarchy View' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2018-01-22 13:05:49.566
+!MESSAGE Removing part descriptor with the 'com.python.pydev.analysis.indexview.PyIndexView' id and the 'Index View' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2018-01-22 13:05:49.581
+!MESSAGE Removing part descriptor with the 'org.eclipse.mylyn.builds.navigator.builds' id and the 'Builds' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2018-01-22 13:05:49.586
+!MESSAGE Removing part descriptor with the 'org.eclipse.recommenders.snipmatch.rcp.views.snippets' id and the 'Snippets' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2018-01-22 13:05:49.598
+!MESSAGE Removing part descriptor with the 'org.python.pydev.navigator.view' id and the 'PyDev Package Explorer' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2018-01-22 13:05:49.598
+!MESSAGE Removing part descriptor with the 'org.python.pydev.views.PyCodeCoverageView' id and the 'Code Coverage' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2018-01-22 13:05:49.599
+!MESSAGE Removing part descriptor with the 'org.python.pydev.debug.profile.ProfileView' id and the 'Profile (PyVmMonitor)' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2018-01-22 13:05:49.600
+!MESSAGE Removing part descriptor with the 'org.python.pydev.views.ReferrersView' id and the 'Referrers View' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2018-01-22 13:05:49.600
+!MESSAGE Removing part descriptor with the 'org.python.pydev.views.CurrentExceptionView' id and the 'Caught Exceptions' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2018-01-22 13:05:49.601
+!MESSAGE Removing part descriptor with the 'org.python.pydev.debug.pyunit.pyUnitView' id and the 'PyUnit' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.equinox.p2.operations 4 10053 2018-01-22 13:08:22.366
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10053 2018-01-22 13:08:22.366
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2018-01-22 13:08:22.366
+!MESSAGE Software being installed: WST Server Adapter Plug-in Developer Resources 3.2.600.v201603031514 (org.eclipse.wst.server_adapters.sdk.feature.feature.group 3.2.600.v201603031514)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2018-01-22 13:08:22.366
+!MESSAGE Missing requirement: Jetty :: Webapp Application Support 9.3.5.v20151012 (org.eclipse.jetty.webapp 9.3.5.v20151012) requires 'package org.eclipse.jetty.http [9.3.5,9.3.6)' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2018-01-22 13:08:22.366
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2018-01-22 13:08:22.366
+!MESSAGE From: WST Server Adapters 3.2.403.v201508132126 (org.eclipse.wst.server_adapters.feature.feature.group 3.2.403.v201508132126)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2018-01-22 13:08:22.366
+!MESSAGE To: org.eclipse.jetty.webapp [9.3.5.v20151012]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2018-01-22 13:08:22.366
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2018-01-22 13:08:22.366
+!MESSAGE From: WST Server Adapter Plug-in Developer Resources 3.2.600.v201603031514 (org.eclipse.wst.server_adapters.sdk.feature.feature.group 3.2.600.v201603031514)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2018-01-22 13:08:22.366
+!MESSAGE To: org.eclipse.wst.server_adapters.feature.feature.group [3.2.403.v201508132126]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 10053 2018-01-22 13:08:22.401
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10053 2018-01-22 13:08:22.401
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2018-01-22 13:08:22.401
+!MESSAGE Software being installed: WST Server Adapter Plug-in Developer Resources 3.2.600.v201603031514 (org.eclipse.wst.server_adapters.sdk.feature.feature.group 3.2.600.v201603031514)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2018-01-22 13:08:22.401
+!MESSAGE Missing requirement: Jetty :: Webapp Application Support 9.3.5.v20151012 (org.eclipse.jetty.webapp 9.3.5.v20151012) requires 'package org.eclipse.jetty.http [9.3.5,9.3.6)' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2018-01-22 13:08:22.401
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2018-01-22 13:08:22.401
+!MESSAGE From: WST Server Adapters 3.2.403.v201508132126 (org.eclipse.wst.server_adapters.feature.feature.group 3.2.403.v201508132126)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2018-01-22 13:08:22.401
+!MESSAGE To: org.eclipse.jetty.webapp [9.3.5.v20151012]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2018-01-22 13:08:22.401
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2018-01-22 13:08:22.401
+!MESSAGE From: WST Server Adapter Plug-in Developer Resources 3.2.600.v201603031514 (org.eclipse.wst.server_adapters.sdk.feature.feature.group 3.2.600.v201603031514)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2018-01-22 13:08:22.401
+!MESSAGE To: org.eclipse.wst.server_adapters.feature.feature.group [3.2.403.v201508132126]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 10053 2018-01-22 13:08:22.449
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10053 2018-01-22 13:08:22.449
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2018-01-22 13:08:22.449
+!MESSAGE Software being installed: WST Server Adapter Plug-in Developer Resources 3.2.600.v201603031514 (org.eclipse.wst.server_adapters.sdk.feature.feature.group 3.2.600.v201603031514)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2018-01-22 13:08:22.449
+!MESSAGE Missing requirement: Jetty :: Webapp Application Support 9.3.5.v20151012 (org.eclipse.jetty.webapp 9.3.5.v20151012) requires 'package org.eclipse.jetty.http [9.3.5,9.3.6)' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2018-01-22 13:08:22.449
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2018-01-22 13:08:22.449
+!MESSAGE From: WST Server Adapters 3.2.403.v201508132126 (org.eclipse.wst.server_adapters.feature.feature.group 3.2.403.v201508132126)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2018-01-22 13:08:22.449
+!MESSAGE To: org.eclipse.jetty.webapp [9.3.5.v20151012]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2018-01-22 13:08:22.449
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2018-01-22 13:08:22.450
+!MESSAGE From: WST Server Adapter Plug-in Developer Resources 3.2.600.v201603031514 (org.eclipse.wst.server_adapters.sdk.feature.feature.group 3.2.600.v201603031514)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2018-01-22 13:08:22.450
+!MESSAGE To: org.eclipse.wst.server_adapters.feature.feature.group [3.2.403.v201508132126]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 10053 2018-01-22 13:08:22.450
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10053 2018-01-22 13:08:22.450
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2018-01-22 13:08:22.450
+!MESSAGE Software being installed: WST Server Adapter Plug-in Developer Resources 3.2.600.v201603031514 (org.eclipse.wst.server_adapters.sdk.feature.feature.group 3.2.600.v201603031514)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2018-01-22 13:08:22.450
+!MESSAGE Missing requirement: Jetty :: Webapp Application Support 9.3.5.v20151012 (org.eclipse.jetty.webapp 9.3.5.v20151012) requires 'package org.eclipse.jetty.http [9.3.5,9.3.6)' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2018-01-22 13:08:22.450
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2018-01-22 13:08:22.450
+!MESSAGE From: WST Server Adapters 3.2.403.v201508132126 (org.eclipse.wst.server_adapters.feature.feature.group 3.2.403.v201508132126)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2018-01-22 13:08:22.450
+!MESSAGE To: org.eclipse.jetty.webapp [9.3.5.v20151012]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2018-01-22 13:08:22.450
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2018-01-22 13:08:22.450
+!MESSAGE From: WST Server Adapter Plug-in Developer Resources 3.2.600.v201603031514 (org.eclipse.wst.server_adapters.sdk.feature.feature.group 3.2.600.v201603031514)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2018-01-22 13:08:22.450
+!MESSAGE To: org.eclipse.wst.server_adapters.feature.feature.group [3.2.403.v201508132126]
+!SESSION 2018-01-22 13:13:14.436 -----------------------------------------------
+eclipse.buildId=4.7.2.M20171130-0510
+java.version=1.8.0_144
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product -keyring /Users/eltonxue/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.jee.product -keyring /Users/eltonxue/.eclipse_keyring
+
+!ENTRY org.eclipse.core.net 1 0 2018-01-22 13:13:31.617
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.wst.server.discovery 1 0 2018-01-22 13:20:03.871
+!MESSAGE already installed: org.eclipse.jst.server.generic.jonas4
+
+!ENTRY org.eclipse.ui 4 0 2018-01-22 13:35:24.835
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.wst.server.ui.internal.editor.ServerEditor.checkResourceState(ServerEditor.java:975)
+	at org.eclipse.wst.server.ui.internal.editor.ServerEditor$ActivationListener.handleActivation(ServerEditor.java:82)
+	at org.eclipse.wst.server.ui.internal.editor.ServerEditor$ActivationListener.shellActivated(ServerEditor.java:72)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:89)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:86)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4258)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1502)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1525)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1506)
+	at org.eclipse.swt.widgets.Shell.windowDidBecomeKey(Shell.java:2238)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5847)
+	at org.eclipse.swt.internal.cocoa.OS.objc_msgSendSuper(Native Method)
+	at org.eclipse.swt.widgets.Widget.callSuper(Widget.java:221)
+	at org.eclipse.swt.widgets.Widget.becomeKeyWindow(Widget.java:382)
+	at org.eclipse.swt.widgets.Shell.becomeKeyWindow(Shell.java:530)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5663)
+	at org.eclipse.swt.internal.cocoa.OS.objc_msgSend(Native Method)
+	at org.eclipse.swt.internal.cocoa.NSWindow.close(NSWindow.java:54)
+	at org.eclipse.swt.widgets.Shell.destroyWidget(Shell.java:825)
+	at org.eclipse.swt.widgets.Widget.release(Widget.java:1353)
+	at org.eclipse.swt.widgets.Control.release(Control.java:2957)
+	at org.eclipse.swt.widgets.Widget.dispose(Widget.java:687)
+	at org.eclipse.jface.window.Window.close(Window.java:330)
+	at org.eclipse.jface.dialogs.Dialog.close(Dialog.java:990)
+	at org.eclipse.jface.dialogs.MessageDialog.buttonPressed(MessageDialog.java:270)
+	at org.eclipse.wst.server.ui.internal.DeleteServerDialog.buttonPressed(DeleteServerDialog.java:230)
+	at org.eclipse.jface.dialogs.Dialog.lambda$0(Dialog.java:619)
+	at org.eclipse.swt.events.SelectionListener$1.widgetSelected(SelectionListener.java:81)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:249)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:86)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4258)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1502)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1525)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1510)
+	at org.eclipse.swt.widgets.Widget.notifyListeners(Widget.java:1314)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4082)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3699)
+	at org.eclipse.jface.window.Window.runEventLoop(Window.java:818)
+	at org.eclipse.jface.window.Window.open(Window.java:794)
+	at org.eclipse.jface.dialogs.MessageDialog.open(MessageDialog.java:396)
+	at org.eclipse.wst.server.ui.internal.view.servers.GlobalDeleteAction.deleteServer(GlobalDeleteAction.java:205)
+	at org.eclipse.wst.server.ui.internal.view.servers.GlobalDeleteAction.run(GlobalDeleteAction.java:131)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:473)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:565)
+	at org.eclipse.jface.action.ActionContributionItem.lambda$4(ActionContributionItem.java:397)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:86)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4258)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1502)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1525)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1510)
+	at org.eclipse.swt.widgets.Widget.notifyListeners(Widget.java:1314)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4082)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3699)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1150)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1039)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:153)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:680)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:594)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:151)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:653)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:590)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1499)
+
+!ENTRY org.eclipse.wst.server.discovery 1 0 2018-01-22 13:35:32.602
+!MESSAGE already installed: org.eclipse.jst.server.generic.jonas4
+
+!ENTRY org.eclipse.jface.text 2 0 2018-01-22 13:41:23.248
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2018-01-22 13:41:23.249
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2018-01-22 18:46:32.252
+!MESSAGE Several ports (8080, 8009) required by Tomcat v8.5 Server at localhost are already in use. The server may already be running in another process, or a system process may be using the port. To start this server you will need to stop the other process or change the port number(s).
+
+!ENTRY org.eclipse.jface.text 2 0 2018-01-22 19:57:36.589
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2018-01-22 19:57:36.597
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
