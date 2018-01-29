@@ -13,3 +13,5 @@
 0:0:0:0:0:0:0:1 - - [28/Jan/2018:21:47:45 -0800] "GET /Project1/MovieList HTTP/1.1" 200 4915
 0:0:0:0:0:0:0:1 - - [28/Jan/2018:21:47:51 -0800] "GET /Project1/movielist HTTP/1.1" 404 1096
 0:0:0:0:0:0:0:1 - - [28/Jan/2018:21:47:57 -0800] "GET /Project1/MovieList HTTP/1.1" 200 4915
+0:0:0:0:0:0:0:1 - - [28/Jan/2018:21:59:55 -0800] "GET /Project1/MovieList HTTP/1.1" 200 4915
+0:0:0:0:0:0:0:1 - - [28/Jan/2018:22:00:30 -0800] "GET /Project1/MovieList HTTP/1.1" 200 4915
