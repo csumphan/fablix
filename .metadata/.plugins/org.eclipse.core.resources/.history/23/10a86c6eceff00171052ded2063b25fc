@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link type="text/css" href="styles.css" rel="stylesheet"/>
+</head>
+<body>
+	<h1>Fablix - Movie List</h1>
+	<div id="movie-list-container">
+		<div class="movie-item"></div>
+		<div class="movie-item"></div>
+		<div class="movie-item"></div>
+		<div class="movie-item"></div>
+		<div class="movie-item"></div>
+		<div class="movie-item"></div>
+		<div class="movie-item"></div>
+		<div class="movie-item"></div>
+		<div class="movie-item"></div>
+	</div>
+</body>
+</html>

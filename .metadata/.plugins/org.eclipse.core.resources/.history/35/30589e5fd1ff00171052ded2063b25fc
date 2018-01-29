@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link type="text/css" href="styles.css" rel="stylesheet"/>
+</head>
+<body>
+	<h1>Fablix - Movie List</h1>
+	<div id="movie-list-container">
+		<div class="movie-item">
+			<h1>DeathNote <span>(2004)</span></h1>
+			<h2>Directed by Matt Damon</h2>
+			<div class="info-container">
+				<div class="genres-container">
+					GENRES: Horror, Adventure, Drama
+				</div>
+				<div class="stars-container">
+					STARS: Jennifer Aniston, Matt Damon, Sonia Xu
+				</div>
+			</div>
+		</div>
+		<div class="movie-item"></div>
+		<div class="movie-item"></div>
+		<div class="movie-item"></div>
+		<div class="movie-item"></div>
+		<div class="movie-item"></div>
+		<div class="movie-item"></div>
+		<div class="movie-item"></div>
+		<div class="movie-item"></div>
+	</div>
+</body>
+</html>
