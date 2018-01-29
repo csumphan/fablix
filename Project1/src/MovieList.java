@@ -1,5 +1,4 @@
 
-/* A servlet to display the contents of the MySQL movieDB database */
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,19 +9,32 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Servlet implementation class MovieList
+ */
+@WebServlet("/MovieList")
 public class MovieList extends HttpServlet {
-    public String getServletInfo() {
-        return "Servlet connects to MySQL database and displays result of a SELECT";
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public MovieList() {
+        super();
+        // TODO Auto-generated constructor stub
     }
 
-    // Use http GET
-
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        String loginUser = "root";
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		String loginUser = "root";
         String loginPasswd = "cs122bfablix";
         String loginUrl = "jdbc:mysql://localhost:3306/moviedb";
 
@@ -84,7 +96,7 @@ public class MovieList extends HttpServlet {
 	                	String genre_name = rs_genres.getString("name");
 	                	genre_list = genre_list + genre_name + ", ";
                 }
-              
+        
                 
                 star_list = star_list.trim();
                 star_list = star_list.substring(0, star_list.length() - 1);
@@ -122,5 +134,14 @@ public class MovieList extends HttpServlet {
             return;
         }
         out.close();
-    }
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
 }
