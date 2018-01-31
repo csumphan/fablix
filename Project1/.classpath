@@ -15,5 +15,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="/Users/eltonxue/Documents/UCI/UCI Academics/2018 Winter Quarter/CS122B/cs122b-winter18-team-82/Project1/WebContent/WEB-INF/lib/mysql-connector-java-5.1.45-bin.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mysql-connector-java-5.1.45-bin.jar"/>
+	<classpathentry kind="lib" path="/Users/eltonxue/Documents/UCI/UCI Academics/2018 Winter Quarter/CS122B/cs122b-winter18-team-82/Project1/WebContent/WEB-INF/lib/gson-2.7.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

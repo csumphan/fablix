@@ -26,7 +26,6 @@ public class MovieList extends HttpServlet {
      */
     public MovieList() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
