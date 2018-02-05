@@ -94,6 +94,10 @@
   <!--   showServerInfo      Should server information be presented in the  -->
   <!--                       response sent to clients when directory        -->
   <!--                       listings is enabled? [true]                    -->
+	<servlet>
+    	    <servlet-name>MovieListServlet</servlet-name>
+        <servlet-class>MovieList</servlet-class>
+    </servlet>
 
     <servlet>
         <servlet-name>default</servlet-name>
@@ -396,6 +400,11 @@
   <!-- must uncomment these mappings (or add them to your application's own -->
   <!-- web.xml deployment descriptor) to enable these services              -->
 
+    <servlet-mapping>
+        <servlet-name>MovieListServlet</servlet-name>
+        <url-pattern>/servlet/MovieList</url-pattern>
+    </servlet-mapping>
+    
     <!-- The mapping for the default servlet -->
     <servlet-mapping>
         <servlet-name>default</servlet-name>

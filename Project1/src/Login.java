@@ -1,7 +1,6 @@
 
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -14,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import java.io.PrintWriter;
 import com.google.gson.JsonObject;
 
 /**
@@ -116,13 +116,6 @@ public class Login extends HttpServlet {
                     + "<P>SQL error in doGet: " + ex.getMessage() + "</P></BODY></HTML>");
             return;
         }
-        // Result set (look at MovieList.java)
-        // JsonArray jsonArray = new JsonArray();
-        // JsonObject jsonObject = new JsonObject();
-        
-        // jsonObject.addProperty('star_id', star_id);
-        
-        // out.write(jsonArray.toString());
         out.close();
 		doGet(request, response);
 	}
