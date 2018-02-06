@@ -17,6 +17,7 @@
     "react-router-redux": "^5.0.0-alpha.6",
     "reactstrap": "^4.8.0",
     "redux": "^3.7.2",
+    "redux-persist": "^5.6.10",
     "redux-saga": "^0.15.6"
   },
   "devDependencies": {

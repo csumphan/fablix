@@ -53,9 +53,6 @@ function* loginUser(action) {
     yield put(loginUserError(result.data.error));
   }
   else {
-    const stringUser = JSON.stringify(result.data);
-    document.cookie = `user=${stringUser}`;
-
     yield put(loginUserLoaded(result));
   }
 }
