@@ -1,4 +1,4 @@
-import { fromJS } from 'immutable';
+// import { fromJS } from 'immutable';
 
 import {
   LOGIN_USER,
@@ -6,34 +6,40 @@ import {
   LOGIN_USER_ERROR,
 } from './constants';
 
-const initialState = fromJS({
+const initialState = {
   userData: null,
   userLoginLoading: null,
   userLoginLoaded: null,
   userLoginError: null,
-});
+};
 
-const appReducer = (state = initialState, action) => {
+const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_USER:
-      return state
-        .set('userLoginLoading', true)
-        .set('userLoginError', null);
+      return {
+        ...state,
+        userLoginLoading: true,
+        userLoginError: null
+      };
     case LOGIN_USER_LOADED:
-      return state
-        .set('userData', action.data)
-        .set('userLoginLoading', false)
-        .set('userLoginLoaded', true)
-        .set('userLoginError', null);
+      return {
+        ...state,
+        userData: action.data,
+        userLoginLoading: false,
+        userLoginLoaded: true,
+        userLoginError: null
+      };
     case LOGIN_USER_ERROR:
     console.log('aaaaa', action);
-      return state
-        .set('userLoginLoading', false)
-        .set('userLoginLoaded', false)
-        .set('userLoginError', action.error);
+      return {
+        ...state,
+        userLoginLoading: false,
+        userLoginLoaded: false,
+        userLoginError: action.error
+      };
     default:
       return state;
   }
 };
 
-export default appReducer;
+export default userReducer;
