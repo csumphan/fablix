@@ -7,6 +7,7 @@ import { history } from './store';
 import LoginPage from './containers/LoginPage';
 import ShoppingCart from './containers/ShoppingCart';
 import MovieListPage from './containers/MovieListPage';
+import SearchPage from './containers/SearchPage';
 
 const routes = (
   <ConnectedRouter history={history}>
@@ -15,6 +16,7 @@ const routes = (
       <Route exact path="/cart" component={ShoppingCart} />
       {/* NOTE: put other app routes here */}
       <Route exact path="/MovieList" component={MovieListPage} />
+      <Route exact path="/Search" component={SearchPage} />
     </Switch>
   </ConnectedRouter>
 );
