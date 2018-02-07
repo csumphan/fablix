@@ -313,3 +313,8 @@
 0:0:0:0:0:0:0:1 - - [06/Feb/2018:19:24:42 -0800] "GET /Project1/Search?title=e HTTP/1.1" 200 1766007
 0:0:0:0:0:0:0:1 - - [06/Feb/2018:19:24:44 -0800] "GET /Project1/Search?title=e HTTP/1.1" 200 1766007
 0:0:0:0:0:0:0:1 - - [06/Feb/2018:19:25:34 -0800] "GET /Project1/Search?year=2008 HTTP/1.1" 200 41077
+0:0:0:0:0:0:0:1 - - [06/Feb/2018:23:36:29 -0800] "GET /Project1/Search?title=gone HTTP/1.1" 200 2922
+0:0:0:0:0:0:0:1 - - [06/Feb/2018:23:43:20 -0800] "GET /Project1/Search?title=forest HTTP/1.1" 200 2408
+0:0:0:0:0:0:0:1 - - [06/Feb/2018:23:43:29 -0800] "GET /Project1/Search?title=da HTTP/1.1" 200 118610
+0:0:0:0:0:0:0:1 - - [06/Feb/2018:23:57:43 -0800] "GET /Project1/Search?title=dav HTTP/1.1" 200 2396
+0:0:0:0:0:0:0:1 - - [06/Feb/2018:23:57:51 -0800] "GET /Project1/Search?title=da HTTP/1.1" 200 118610

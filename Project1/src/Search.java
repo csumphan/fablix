@@ -74,6 +74,7 @@ public class Search extends HttpServlet {
 		JsonElement director = searchTerms.get("director");
 		JsonElement star = searchTerms.get("star"); 
 		JsonElement genre = searchTerms.get("genre");
+		JsonElement startWith = searchTerms.get("startWith");
 		
 		try {
             //Class.forName("org.gjt.mm.mysql.Driver");
@@ -127,6 +128,12 @@ public class Search extends HttpServlet {
 	    			
 	        		searchQuery = "SELECT * FROM (" + searchQuery + ") AS alias JOIN (SELECT movieId AS movieIdGenres FROM genres_in_movies JOIN (SELECT id FROM genres WHERE name LIKE '%" + genreString + "%') AS movieIds ON genres_in_movies.genreId = movieIds.id) AS movieIds ON alias.id = movieIds.movieIdGenres";
 	        		
+            }
+            
+            if (startWith != null) {
+	            	String[] startWithStringSplit = startWith.getAsString().split("\\+");
+	        		String startWithString = String.join(" ", startWithStringSplit);
+	        		searchQuery = "SELECT * FROM (" + searchQuery + ") AS alias WHERE title LIKE '" + startWithString + "%'";
             }
             
             Statement statement = dbcon.createStatement();
