@@ -10,45 +10,59 @@ import {
   SORT_YEAR_DESCENDING,
 } from './constants';
 
-const initialState = fromJS({
+const initialState = {
   moviesData: null,
   searchMoviesLoading: null,
   searchMoviesLoaded: null,
   searchMoviesError: null,
-});
+};
 
 const appReducer = (state = initialState, action) => {
   switch (action.type) {
     case SEARCH_MOVIES:
-      return state.set('searchMoviesLoading', true).set('searchMoviesError', null);
+      return {
+        ...state,
+        searchMoviesLoading: true,
+        searchMoviesError: null,
+      };
     case SEARCH_MOVIES_LOADED:
-      return state
-        .set('moviesData', action.data)
-        .set('searchMoviesLoading', false)
-        .set('searchMoviesLoaded', true)
-        .set('searchMoviesError', null);
+      return {
+        ...state,
+        moviesData: action.data,
+        searchMoviesLoading: false,
+        searchMoviesLoaded: true,
+        searchMoviesError: null,
+      };
     case SEARCH_MOVIES_ERROR:
-      return state
-        .set('searchMoviesLoading', false)
-        .set('searchMoviesLoaded', false)
-        .set('searchMoviesError', action.error);
-    case SORT_TITLE_ASCENDING:
-      console.log('sort title ascending');
-      return state;
-
-    case SORT_TITLE_DESCENDING: {
-      console.log('sort title descending');
-      console.log(state);
-      return state;
+      return {
+        ...state,
+        searchMoviesLoading: false,
+        searchMoviesLoaded: false,
+        searchMoviesError: action.error,
+      };
+    case SORT_TITLE_ASCENDING: {
+      const allMovies = { ...state.moviesData };
+      allMovies.data.sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()));
+      return { ...state, moviesData: allMovies };
     }
 
-    case SORT_YEAR_ASCENDING:
-      console.log('sort year ascending');
-      return state;
+    case SORT_TITLE_DESCENDING: {
+      const allMovies = { ...state.moviesData };
+      allMovies.data.sort((a, b) => b.title.toLowerCase().localeCompare(a.title.toLowerCase()));
+      return { ...state, moviesData: allMovies };
+    }
 
-    case SORT_YEAR_DESCENDING:
-      console.log('sort year descending');
-      return state;
+    case SORT_YEAR_ASCENDING: {
+      const allMovies = { ...state.moviesData };
+      allMovies.data.sort((a, b) => parseInt(a.year, 10) - parseInt(b.year, 10));
+      return { ...state, moviesData: allMovies };
+    }
+
+    case SORT_YEAR_DESCENDING: {
+      const allMovies = { ...state.moviesData };
+      allMovies.data.sort((a, b) => parseInt(b.year, 10) - parseInt(a.year, 10));
+      return { ...state, moviesData: allMovies };
+    }
 
     default:
       return state;
