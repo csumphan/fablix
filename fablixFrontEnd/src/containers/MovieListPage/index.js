@@ -29,9 +29,9 @@ class MovieList extends Component {
       currentMoviesPerPage: 5,
     };
 
-    const searchTerms = { director: 'david', title: 'e' };
-
-    this.props.actions.searchMovies(searchTerms);
+    // const searchTerms = { director: 'david', title: 'e' };
+    //
+    // this.props.actions.searchMovies(searchTerms);
   }
 
   componentWillReceiveProps(nextProps) {

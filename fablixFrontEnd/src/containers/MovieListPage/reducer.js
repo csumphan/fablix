@@ -1,5 +1,3 @@
-import { fromJS } from 'immutable';
-
 import {
   SEARCH_MOVIES,
   SEARCH_MOVIES_LOADED,
