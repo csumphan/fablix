@@ -3,6 +3,7 @@ import axios from 'axios';
 import queryString from 'query-string';
 
 import { loginUserLoaded, loginUserError } from './actions';
+import { clearCart } from '../ShoppingCart/actions';
 import { api } from '../../config';
 
 import {
@@ -54,6 +55,7 @@ function* loginUser(action) {
     yield put(loginUserError(result.data.error));
   }
   else {
+    yield put(clearCart());
     const stringUser = JSON.stringify(result.data);
     document.cookie = `user=${stringUser}`;
 

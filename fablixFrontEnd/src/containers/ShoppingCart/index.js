@@ -3,12 +3,10 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import FontAwesome from 'react-fontawesome';
 
-import { loginUser } from './actions';
-import { selectUserData, selectUserLoginError } from './selectors';
+import CartItem from '../../components/CartItem';
 
-
-import LabelInput from '../../components/LabelInput';
-
+import { updateCart } from './actions';
+import { selectShoppingCartData, selectShoppingCartError } from './selectors';
 
 import './styles.css';
 
@@ -22,87 +20,41 @@ class ShoppingCart extends Component {
     };
   }
 
-  handleTextChange = (field) => (e) => {
-    this.setState({[field]: e.target.value});
-  };
-
-
-  handleLogin = (e) => {
+  changeCount = (movie) => (count) => (e) => {
     e.preventDefault();
+    const intCount = Number(count);
 
-    const cred = {
-      email: this.state.email,
-      password: this.state.password
+    const movieData = {
+      movie,
+      count: intCount
     };
-
-    this.props.actions.loginUser(cred);
-
+    this.props.actions.updateCart(movieData);
   }
 
-
   render() {
+    const movies = this.props.cartData;
+    const cartMovies = movies.map((movie, index) => {
+
+      const lastItem = (index + 1 === movies.length) ? 'last-item' : ''
+      return (
+        <CartItem
+          id={lastItem}
+          movieName={movie.movie.title}
+          count={movie.count}
+          updateCount={this.changeCount(movie.movie)}
+         />
+      );
+    });
+
     return (
       <div id="shopping-cart-root">
         <div className='left-column'>
           <div id="cart">
             <div id="cart-header">
-              <h2>Your Cart (2)</h2>
+              <h2>Your Cart</h2>
             </div>
             <div id="movies">
-              <div className="cart-item">
-                <p className='cart-movie'>Your Lie in April</p>
-                <form>
-                  <input className='quantity' type="number"/>
-                  <button className='cart-button'>
-                    <span className='button-label'>
-                      <p>Update</p>
-                      <FontAwesome name='edit' />
-                    </span>
-                  </button>
-                  <button className='cart-button remove'>
-                    <span className='button-label'>
-                      <p>Remove</p>
-                      <FontAwesome name='trash' />
-                    </span>
-                  </button>
-                </form>
-              </div>
-              <div className="cart-item">
-                <p className='cart-movie'>Your Lie in April</p>
-                <form>
-                  <input className='quantity' type="number"/>
-                  <button className='cart-button'>
-                    <span className='button-label'>
-                      <p>Update</p>
-                      <FontAwesome name='edit' />
-                    </span>
-                  </button>
-                  <button className='cart-button remove'>
-                    <span className='button-label'>
-                      <p>Remove</p>
-                      <FontAwesome name='trash' />
-                    </span>
-                  </button>
-                </form>
-              </div>
-              <div id='last-item' className="cart-item">
-                <p className='cart-movie'>Your Lie in April</p>
-                <form>
-                  <input className='quantity' type="number"/>
-                  <button className='cart-button'>
-                    <span className='button-label'>
-                      <p>Update</p>
-                      <FontAwesome name='edit' />
-                    </span>
-                  </button>
-                  <button className='cart-button remove'>
-                    <span className='button-label'>
-                      <p>Remove</p>
-                      <FontAwesome name='trash' />
-                    </span>
-                  </button>
-                </form>
-              </div>
+              {cartMovies}
             </div>
           </div>
         </div>
@@ -136,21 +88,17 @@ class ShoppingCart extends Component {
   }
 }
 
-// const mapStateToProps = (state) => {
-//   console.log('selectUserData', selectUserData(state));
-//   console.log('selectUserLoginError', selectUserLoginError(state));
-//   return {
-//     userData: selectUserData(state),
-//     error: selectUserLoginError(state)
-//   }
-// };
-//
-// const mapDispatchToProps = (dispatch) => {
-//   console.log('dispatch', dispatch);
-//   return {
-//     actions: bindActionCreators({ loginUser }, dispatch),
-//   };
-// };
+const mapStateToProps = (state) => {
+  return {
+    cartData: selectShoppingCartData(state),
+    error: selectShoppingCartError(state)
+  }
+};
 
-// export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
-export default ShoppingCart;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators({ updateCart }, dispatch),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShoppingCart);

@@ -7,6 +7,7 @@
 import {
   UPDATE_CART,
   UPDATE_CART_ERROR,
+  CLEAR_CART,
 } from './constants';
 
 const initialState = {
@@ -16,6 +17,10 @@ const initialState = {
 
 const shoppingCartReducer = (state = initialState, action) => {
   switch (action.type) {
+    case CLEAR_CART: {
+      const initState = { ...initialState };
+      return initState;
+    }
     case UPDATE_CART: {
       const movieData = action.data;
       const currentCart = [...state.shoppingCartData];
