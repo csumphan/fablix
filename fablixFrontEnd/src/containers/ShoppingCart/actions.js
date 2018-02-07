@@ -3,9 +3,9 @@ import {
   UPDATE_CART_ERROR,
 } from './constants';
 
-export const updateCart = (movie) => ({
+export const updateCart = (data) => ({
   type: UPDATE_CART,
-  movie
+  data
 });
 
 export const updateCartError = (error) => ({

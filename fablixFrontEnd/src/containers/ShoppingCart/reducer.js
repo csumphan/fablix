@@ -1,39 +1,53 @@
-import { fromJS } from 'immutable';
+
+// const data = {
+//   movie: movieData,
+//   count: 1
+// }
 
 import {
-  LOGIN_USER,
-  LOGIN_USER_LOADED,
-  LOGIN_USER_ERROR,
+  UPDATE_CART,
+  UPDATE_CART_ERROR,
 } from './constants';
 
-const initialState = fromJS({
-  userData: null,
-  userLoginLoading: null,
-  userLoginLoaded: null,
-  userLoginError: null,
-});
+const initialState = {
+  shoppingCartData: [],
+  shoppingCartError: null,
+};
 
-const userReducer = (state = initialState, action) => {
+const shoppingCartReducer = (state = initialState, action) => {
   switch (action.type) {
-    case LOGIN_USER:
-      return state
-        .set('userLoginLoading', true)
-        .set('userLoginError', null);
-    case LOGIN_USER_LOADED:
-      return state
-        .set('userData', action.data)
-        .set('userLoginLoading', false)
-        .set('userLoginLoaded', true)
-        .set('userLoginError', null);
-    case LOGIN_USER_ERROR:
-    console.log('aaaaa', action);
-      return state
-        .set('userLoginLoading', false)
-        .set('userLoginLoaded', false)
-        .set('userLoginError', action.error);
+    case UPDATE_CART: {
+      const movieData = action.data;
+      const currentCart = [...state.shoppingCartData];
+      console.log('currentCart', currentCart);
+      for (let i = 0; i < currentCart.length; i++) {
+        if (currentCart[i].movie.id === movieData.movie.id) {
+          currentCart[i].count += movieData.count;
+          return {
+            ...state,
+            shoppingCartData: currentCart,
+            shoppingCartError: null,
+          };
+        }
+      }
+      currentCart.push({
+        movie: movieData.movie,
+        count: movieData.count
+      });
+      return {
+        ...state,
+        shoppingCartData: currentCart,
+        shoppingCartError: null,
+      };
+    }
+    case UPDATE_CART_ERROR:
+      return {
+        ...state,
+        shoppingCartError: action.error
+      };
     default:
       return state;
   }
 };
 
-export default userReducer;
+export default shoppingCartReducer;

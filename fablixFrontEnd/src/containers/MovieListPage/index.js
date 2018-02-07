@@ -13,7 +13,11 @@ import {
   sortYearAscending,
   sortYearDescending,
 } from './actions';
+
 import { selectMoviesData, selectSearchMoviesError } from './selectors';
+
+import { updateCart } from '../ShoppingCart/actions';
+import { selectShoppingCartData, selectShoppingCartError } from '../ShoppingCart/selectors';
 
 import './styles.css';
 
@@ -71,6 +75,15 @@ class MovieList extends Component {
       currentMoviesPerPage: n,
       currentPage: 1,
     });
+  };
+
+  handleShoppingCart = (movie) => () => {
+    console.log('You Clicked', movie);
+    const movieData = {
+      movie,
+      count: 1
+    };
+    this.props.actions.updateCart(movieData);
   };
 
   renderActions = () => {
@@ -148,6 +161,8 @@ class MovieList extends Component {
       const currentMovies = movies.slice(indexOfFirstMovie, indexOfLastMovie);
 
       const moviesData = currentMovies.map((movie, index) => {
+        console.log('moviedata', movie);
+        console.log('this', this);
         if (index % 2 === 0) {
           const movieStars = movie.stars.split(',').map((star, i) => (
             <div key={i} className="movie-star movie-star-alternate">
@@ -177,7 +192,7 @@ class MovieList extends Component {
                 <h2>Stars: {movieStars}</h2>
               </div>
               <div className="add-to-cart">
-                <Button className="button">Add To Cart</Button>
+                <Button onClick={this.handleShoppingCart(movie)} className="button">Add To Cart</Button>
               </div>
             </div>
           );
@@ -209,7 +224,7 @@ class MovieList extends Component {
                 <h2>Stars: {movieStars}</h2>
               </div>
               <div className="add-to-cart">
-                <Button className="button">Add To Cart</Button>
+                <Button onClick={this.handleShoppingCart(movie)} className="button">Add To Cart</Button>
               </div>
             </div>
           );
@@ -257,6 +272,7 @@ const mapDispatchToProps = (dispatch) => {
         sortTitleDescending,
         sortYearAscending,
         sortYearDescending,
+        updateCart,
       },
       dispatch,
     ),
