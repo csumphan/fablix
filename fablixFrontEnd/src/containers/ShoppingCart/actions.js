@@ -1,20 +1,14 @@
 import {
-  ADD_TO_CART,
-  ADD_TO_CART_SUCCESS,
-  ADD_TO_CART_ERROR,
+  UPDATE_CART,
+  UPDATE_CART_ERROR,
 } from './constants';
 
-export const addToCart = (cred) => ({
-  type: ADD_TO_CART,
-  credential: cred,
+export const updateCart = (movie) => ({
+  type: UPDATE_CART,
+  movie
 });
 
-export const addToCartSuccess = (data) => ({
-  type: ADD_TO_CART_SUCCESS,
-  data,
-});
-
-export const addToCartError = (error) => ({
-  type: ADD_TO_CART_ERROR,
+export const updateCartError = (error) => ({
+  type: UPDATE_CART_ERROR,
   error,
 });

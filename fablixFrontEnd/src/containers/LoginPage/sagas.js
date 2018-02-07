@@ -27,9 +27,10 @@ const postLogin = (credential) => {
   return axios({
     method: 'post',
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
+      'Content-Type': 'application/x-www-form-urlencoded',
     },
     url: `${api}/Login`,
+    withCredentials: true,
     data
   })
     .then((res) => {

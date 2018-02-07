@@ -6,12 +6,13 @@ import FontAwesome from 'react-fontawesome';
 import { loginUser } from './actions';
 import { selectUserData, selectUserLoginError } from './selectors';
 
+
 import LabelInput from '../../components/LabelInput';
 
 
 import './styles.css';
 
-class LoginPage extends Component {
+class ShoppingCart extends Component {
   constructor(props) {
     super(props);
 
@@ -38,78 +39,118 @@ class LoginPage extends Component {
 
   }
 
+
   render() {
     return (
-      <div id="container-root">
-        <div id="container">
-          <div id="intro-container">
-            <h1 id='app-title'>Fablix</h1>
-            <p id='app-one-liner'>The world's most popular and authoritative source for movie, TV and celebrity content!</p>
-            <div id="app-description">
-              <div className="description-container">
-                <div className='icon-container'>
-                  <FontAwesome className='description-icon' name='film' />
-                </div>
-
-                <p>Browse through a catalog of over a million movies</p>
+      <div id="shopping-cart-root">
+        <div className='left-column'>
+          <div id="cart">
+            <div id="cart-header">
+              <h2>Your Cart (2)</h2>
+            </div>
+            <div id="movies">
+              <div className="cart-item">
+                <p className='cart-movie'>Your Lie in April</p>
+                <form>
+                  <input className='quantity' type="number"/>
+                  <button className='cart-button'>
+                    <span className='button-label'>
+                      <p>Update</p>
+                      <FontAwesome name='edit' />
+                    </span>
+                  </button>
+                  <button className='cart-button remove'>
+                    <span className='button-label'>
+                      <p>Remove</p>
+                      <FontAwesome name='trash' />
+                    </span>
+                  </button>
+                </form>
               </div>
-              <div className="description-container">
-                <div className='icon-container'>
-                  <FontAwesome className='description-icon' name='bolt' />
-                </div>
-                <p>Purchase the latest movies instantly</p>
+              <div className="cart-item">
+                <p className='cart-movie'>Your Lie in April</p>
+                <form>
+                  <input className='quantity' type="number"/>
+                  <button className='cart-button'>
+                    <span className='button-label'>
+                      <p>Update</p>
+                      <FontAwesome name='edit' />
+                    </span>
+                  </button>
+                  <button className='cart-button remove'>
+                    <span className='button-label'>
+                      <p>Remove</p>
+                      <FontAwesome name='trash' />
+                    </span>
+                  </button>
+                </form>
               </div>
-              <div className="description-container">
-                <div className='icon-container'>
-                  <FontAwesome className='description-icon' name='star-half-o' />
-                </div>
-                <p>Find the best movies using our advanced rating system</p>
+              <div id='last-item' className="cart-item">
+                <p className='cart-movie'>Your Lie in April</p>
+                <form>
+                  <input className='quantity' type="number"/>
+                  <button className='cart-button'>
+                    <span className='button-label'>
+                      <p>Update</p>
+                      <FontAwesome name='edit' />
+                    </span>
+                  </button>
+                  <button className='cart-button remove'>
+                    <span className='button-label'>
+                      <p>Remove</p>
+                      <FontAwesome name='trash' />
+                    </span>
+                  </button>
+                </form>
               </div>
             </div>
           </div>
-          <div id="login-container">
-            <h2 className="signin-header">Sign In</h2>
-            <form className='form-container' onSubmit={this.handleLogin}>
-              <LabelInput
-                name="user"
-                label="Email"
-                onChange={this.handleTextChange('email')}
-                type='email'
-                required
-              />
-              <LabelInput
-                name="key"
-                label="Password"
-                onChange={this.handleTextChange('password')}
-                type="password"
-                required
-              />
-              <p className="error-msg">{this.props.error}</p>
-              <input className="button" type='submit' value='Sign In' />
-
-            </form>
-          </div>
-
         </div>
+        <div className='right-column'>
+          <div id="checkout">
+            <h1>Summary</h1>
+            <div className='checkout-items'>
+              <h3>Subtotal</h3>
+              <h4>$0.00</h4>
+            </div>
+            <div className='checkout-items'>
+              <h3>Estimated Shipping</h3>
+              <h4>$0.00</h4>
+            </div>
+            <div className='checkout-items'>
+              <h3>Estimated Taxes</h3>
+              <h4>$0.00</h4>
+            </div>
+            <div className='checkout-items'>
+              <h3>Total</h3>
+              <h4>$0.00</h4>
+            </div>
+            <button id='checkout-button'>
+              <p>Checkout</p>
+            </button>
+          </div>
+        </div>
+
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  console.log('selectUserData', selectUserData(state));
-  console.log('selectUserLoginError', selectUserLoginError(state));
-  return {
-    userData: selectUserData(state),
-    error: selectUserLoginError(state)
-  }
-};
+// const mapStateToProps = (state) => {
+//   console.log('selectUserData', selectUserData(state));
+//   console.log('selectUserLoginError', selectUserLoginError(state));
+//   return {
+//     userData: selectUserData(state),
+//     error: selectUserLoginError(state)
+//   }
+// };
+//
+// const mapDispatchToProps = (dispatch) => {
+//   console.log('dispatch', dispatch);
+//   return {
+//     actions: bindActionCreators({ loginUser }, dispatch),
+//   };
+// };
 
-const mapDispatchToProps = (dispatch) => {
-  console.log('dispatch', dispatch);
-  return {
-    actions: bindActionCreators({ loginUser }, dispatch),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
+// export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
+export default ShoppingCart;
