@@ -142,6 +142,7 @@ public class Search extends HttpServlet {
                 String m_year = rs.getString("year");
                 String m_director = rs.getString("director");
                 String m_rating = rs.getString("rating");
+                String m_votes = rs.getString("numVotes");
                 
                 String stars_query = "SELECT name FROM (SELECT starId FROM stars_in_movies WHERE stars_in_movies.movieId = \"" + m_id + "\") AS starIds JOIN stars ON starIds.starId = stars.id";
                 String genres_query = "SELECT name FROM (SELECT genreId FROM genres_in_movies WHERE genres_in_movies.movieId = \"" + m_id + "\") AS genreIds JOIN genres ON genreIds.genreId = genres.id";
@@ -178,6 +179,7 @@ public class Search extends HttpServlet {
                 movie.addProperty("genres", m_genres);
                 movie.addProperty("stars", m_stars);
                 movie.addProperty("rating", m_rating);
+                movie.addProperty("votes", m_votes);
                 
                 moviesArray.add(movie);
          

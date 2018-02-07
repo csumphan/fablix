@@ -1,0 +1,220 @@
+li {
+  list-style-type: none;
+}
+
+body {
+  background-color: #e5e3f1;
+  font-family: 'Nunito', sans-serif;
+}
+
+.page-title {
+  font-size: 30px;
+  text-align: center;
+}
+
+.movies-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.movie-container {
+  background-color: white;
+  width: 70%;
+  font-family: 'Nunito', sans-serif;
+  padding: 25px 55px;
+}
+
+.movie-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.movie-title {
+  letter-spacing: 5px;
+}
+
+.movie-director {
+}
+
+.movie-rating {
+  font-size: 60px;
+  padding: 5px 15px;
+  border-radius: 15px;
+  background-color: #5666a8;
+}
+
+.movie-rating-alternate {
+  background-color: #d1bcdd;
+}
+
+.movie-star {
+  margin: 10px 5px;
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 10px;
+  background-color: #9792ba;
+}
+
+.movie-star-alternate {
+  background-color: lightgrey;
+}
+
+.movie-star:hover {
+  cursor: pointer;
+  color: black;
+}
+
+.movie-star-alternate:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.movie-genre {
+  margin: 10px 5px;
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 10px;
+  background-color: #9792ba;
+}
+
+.movie-genre-alternate {
+  background-color: lightgrey;
+}
+
+.movie-genre:hover {
+  cursor: pointer;
+  color: black;
+}
+
+.movie-genre-alternate:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.movie-container-alternate {
+  background-color: #432772;
+  color: white;
+}
+
+.add-to-cart {
+  float: right;
+}
+
+.button {
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-size: 16px;
+  background-color: #e39088;
+  color: white;
+  border-radius: 0.5em;
+  text-align: center;
+  letter-spacing: 3px;
+  line-height: 50px;
+  height: 50px;
+  width: 200px;
+}
+
+.button:hover {
+  color: black;
+  cursor: pointer;
+}
+
+.icon {
+  margin: 0px 5px;
+}
+
+.action-bar-container {
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
+}
+
+.action-bar {
+  display: flex;
+  justify-content: space-around;
+  width: 70%;
+}
+
+.pagination-bar-container {
+  display: flex;
+  font-size: 15px;
+  justify-content: center;
+}
+
+.pagination-bar {
+  display: flex;
+  width: 70%;
+  background-color: #4a1370;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  color: white;
+  font-size: 20px;
+  padding: 10px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.page-number {
+  border-radius: 10px;
+  text-align: center;
+  background-color: white;
+  padding: 5px 10px;
+  color: black;
+  margin: 5px;
+}
+
+.page-number-active {
+  background-color: #262524;
+  color: white;
+}
+
+.page-number:hover {
+  background-color: #262524;
+  cursor: pointer;
+  color: white;
+}
+
+.action {
+  text-align: center;
+  background-color: #b6b3f6;
+  padding: 10px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.action:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.action-per-page {
+  text-align: center;
+  background-color: #b6b3f6;
+  padding: 15px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.n {
+  border-radius: 10px;
+  background-color: white;
+  margin: 5px;
+  padding: 5px 10px;
+}
+
+.n-active {
+  background-color: #262524;
+  color: white;
+}
+
+.n:hover {
+  background-color: #262524;
+  color: white;
+  cursor: pointer;
+}
+
+.large-icon {
+  font-size: 30px;
+}

@@ -1,10 +1,6 @@
 // import { fromJS } from 'immutable';
 
-import {
-  LOGIN_USER,
-  LOGIN_USER_LOADED,
-  LOGIN_USER_ERROR,
-} from './constants';
+import { LOGIN_USER, LOGIN_USER_LOADED, LOGIN_USER_ERROR } from './constants';
 
 const initialState = {
   userData: null,
@@ -19,7 +15,7 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         userLoginLoading: true,
-        userLoginError: null
+        userLoginError: null,
       };
     case LOGIN_USER_LOADED:
       return {
@@ -27,15 +23,15 @@ const userReducer = (state = initialState, action) => {
         userData: action.data,
         userLoginLoading: false,
         userLoginLoaded: true,
-        userLoginError: null
+        userLoginError: null,
       };
     case LOGIN_USER_ERROR:
-    console.log('aaaaa', action);
+      console.log('aaaaa', action);
       return {
         ...state,
         userLoginLoading: false,
         userLoginLoaded: false,
-        userLoginError: action.error
+        userLoginError: action.error,
       };
     default:
       return state;

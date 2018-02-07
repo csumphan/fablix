@@ -5,7 +5,6 @@ import createSagaMiddleware from 'redux-saga';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-
 import createGlobalReducer from './global-reducer';
 import globalSagas from './global-sagas';
 
@@ -28,13 +27,9 @@ const middlewares = [
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 /* eslint-enable */
 
-const store = createStore(
-  persistedReducer,
-  composeEnhancers(applyMiddleware(...middlewares)),
-);
+const store = createStore(persistedReducer, composeEnhancers(applyMiddleware(...middlewares)));
 
 const persistor = persistStore(store);
-
 
 sagaMiddleware.run(globalSagas);
 
