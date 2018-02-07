@@ -34,11 +34,11 @@ class Search extends Component {
     let searchTerms = {};
 
     if (title) {
-      searchTerms.title = title;
+      searchTerms.title = title.split(' ').join('+');
     }
 
     if (director) {
-      searchTerms.director = director;
+      searchTerms.director = director.split(' ').join('+');
     }
 
     if (year) {
@@ -46,7 +46,7 @@ class Search extends Component {
     }
 
     if (star) {
-      searchTerms.star = star;
+      searchTerms.star = star.split(' ').join('+');
     }
 
     if (Object.keys(searchTerms).length > 0) {
@@ -58,7 +58,7 @@ class Search extends Component {
   renderForm = () => {
     return (
       <form className="search-form-container" onSubmit={this.onFormSubmit}>
-        <h1 id="search-title">Search</h1>
+        <h1 className="title">Search</h1>
         <LabelInput
           name="angle-right"
           placeholder="Gone With The Wind"
