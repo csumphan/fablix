@@ -10,11 +10,17 @@ import {
   CLEAR_CART,
   ADD_ONE_CART,
   DELETE_CART_ITEM,
+  BUY_CART,
+  BUY_CART_ERROR,
+  BUY_CART_SUCCESS,
 } from './constants';
 
 const initialState = {
   shoppingCartData: [],
   shoppingCartError: null,
+  buyCartError: null,
+  buyCartLoading: false,
+  buyCartLoaded: false,
 };
 
 const shoppingCartReducer = (state = initialState, action) => {
@@ -88,6 +94,28 @@ const shoppingCartReducer = (state = initialState, action) => {
       return {
         ...state,
         shoppingCartError: action.error
+      };
+    case BUY_CART:
+      return {
+        ...state,
+        buyCartLoading: true,
+        buyCartError: null,
+      };
+    case BUY_CART_SUCCESS:
+      return {
+        ...state,
+        buyCartData: action.data,
+        buyCartLoading: false,
+        buyCartLoaded: true,
+        buyCartError: null,
+      };
+    case BUY_CART_ERROR:
+      console.log('aaaaa', action);
+      return {
+        ...state,
+        buyCartLoading: false,
+        buyCartLoaded: false,
+        buyCartError: action.error,
       };
     default:
       return state;

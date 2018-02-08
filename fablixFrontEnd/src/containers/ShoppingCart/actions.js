@@ -4,6 +4,9 @@ import {
   CLEAR_CART,
   ADD_ONE_CART,
   DELETE_CART_ITEM,
+  BUY_CART,
+  BUY_CART_SUCCESS,
+  BUY_CART_ERROR,
 } from './constants';
 
 export const updateCart = (data) => ({
@@ -28,4 +31,19 @@ export const updateCartError = (error) => ({
 
 export const clearCart = () => ({
   type: CLEAR_CART,
+});
+
+export const buyCart = (cred) => ({
+  type: BUY_CART,
+  cred
+});
+
+export const buyCartError = (error) => ({
+  type: BUY_CART_ERROR,
+  error,
+});
+
+export const buyCartSuccess = (data) => ({
+  type: BUY_CART_SUCCESS,
+  data,
 });

@@ -41,25 +41,36 @@ class ShoppingCart extends Component {
     e.preventDefault();
 
     const intCount = Number(count);
-    if (intCount >= 1) {
-      const movieData = {
-        movie,
-        count: intCount
-      };
+    if (!isNaN(intCount))  {
+      if (intCount >= 1) {
+        const movieData = {
+          movie,
+          count: intCount
+        };
 
-      this.props.actions.updateCart(movieData);
+        this.props.actions.updateCart(movieData);
+      }
+      else {
+        const movieData = {
+          movie
+        };
+        this.props.actions.deleteCartItem(movieData);
+      }
+    }
+  }
+
+  goToCheckout = (e) => {
+    if(this.getCartCount() <= 0) {
+      e.preventDefault();
     }
     else {
-      const movieData = {
-        movie
-      };
-      this.props.actions.deleteCartItem(movieData);
+      this.props.history.push('/Checkout');
     }
-
   }
 
   render() {
     const movies = this.props.cartData;
+    const disableCheckout = this.getCartCount() <= 0 ? 'disabled' : '';
     const cartMovies = movies.map((movie, index) => {
 
       const lastItem = (index + 1 === movies.length) ? 'last-item' : ''
@@ -106,8 +117,14 @@ class ShoppingCart extends Component {
               <h3>Total</h3>
               <h4>$0.00</h4>
             </div>
-            <button id='checkout-button'>
-              <p>Checkout</p>
+            <button
+              id='checkout-button'
+              className={`${disableCheckout}`}
+              role='button'
+              onClick={this.goToCheckout}
+              disabled={this.getCartCount() <= 0}
+              >
+              <p className={`${disableCheckout}`}>Checkout</p>
             </button>
           </div>
         </div>

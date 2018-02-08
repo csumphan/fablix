@@ -32,20 +32,12 @@ input[type='number']::-webkit-outer-spin-button {
   align-items: center;
   padding: 0;
   margin: 0;
-<<<<<<< HEAD
-=======
-  border: 1px #cccccc solid;
->>>>>>> 74bcdc471ff8fc0b68cccb4b40d37971fd5b7946
   margin-bottom: 30px;
 }
 
 #cart-header {
-<<<<<<< HEAD
   border-radius: 0.5em 0.5em 0 0;
   background-color: #CCCCCC;
-=======
-  background-color: #cccccc;
->>>>>>> 74bcdc471ff8fc0b68cccb4b40d37971fd5b7946
   width: 100%;
 }
 
@@ -154,4 +146,10 @@ input[type='number']::-webkit-outer-spin-button {
   font-size: 18px;
   font-weight: bold;
   letter-spacing: 3px;
+}
+
+.disabled {
+  background-color: gray;
+  border-color: gray;
+  color: lightgray;
 }
