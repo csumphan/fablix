@@ -251,3 +251,4 @@
 0:0:0:0:0:0:0:1 - - [08/Feb/2018:01:54:16 -0800] "GET /Project1/Search?star=Manfred+D.+Heid HTTP/1.1" 200 181
 0:0:0:0:0:0:0:1 - - [08/Feb/2018:01:54:17 -0800] "GET /Project1/Search?title=Bigfoot&director=Mc+Jones&year=2017 HTTP/1.1" 200 181
 0:0:0:0:0:0:0:1 - - [08/Feb/2018:01:54:19 -0800] "GET /Project1/Search?genre=Thriller HTTP/1.1" 200 257578
+0:0:0:0:0:0:0:1 - - [08/Feb/2018:01:55:18 -0800] "GET /Project1/Search?genre=Adventure HTTP/1.1" 200 124920
