@@ -1,4 +1,9 @@
 
+.input-field::-webkit-inner-spin-button,
+.input-field::-webkit-outer-spin-button {
+  opacity: 0;
+}
+
 .label-input-container {
   margin: 10px;
   margin-bottom: 12px;

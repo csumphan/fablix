@@ -6,7 +6,8 @@ import FontAwesome from 'react-fontawesome';
 import NonEditCartItem from '../../components/NonEditCartItem';
 import LabelInput from '../../components/LabelInput';
 
-// import { updateCart, deleteCartItem } from './actions';
+import { buyCart } from '../ShoppingCart/actions';
+
 import { selectShoppingCartData, selectShoppingCartError } from '../ShoppingCart/selectors';
 
 import './styles.css';
@@ -37,6 +38,10 @@ class Checkout extends Component {
     console.log(e.target.value);
     this.setState({ [field]: e.target.value });
   };
+
+  buyItems = () => {
+    console.log('fuck you');
+  }
 
 
   render() {
@@ -71,50 +76,50 @@ class Checkout extends Component {
         <div className='info-right-column'>
           <div id="info-checkout">
             <h1>Customer Billing Information</h1>
-            <div className='customer-form'>
-              <div className='customer-input-container'>
-                <LabelInput
-                  name="user"
-                  label="Cardholder First Name"
-                  type="text"
-                  onChange={this.handleTextChange('firstName')}
-                  required
-                />
-              </div>
-              <div className='customer-input-container'>
-                <LabelInput
-                  name="user"
-                  label="Cardholder Last Name"
-                  type="text"
-                  onChange={this.handleTextChange('lastName')}
-                  required
-                />
-              </div>
-              <div className='customer-input-container'>
-                <LabelInput
-                  name="credit-card"
-                  label="Credit Card Number"
-                  onChange={this.handleTextChange('cardNum')}
-                  type="text"
-                  required
-                />
-              </div>
+            <form onSubmit={this.buyItems} className='customer-form'>
+              <div>
+                <div className='customer-input-container'>
+                  <LabelInput
+                    name="user"
+                    label="Cardholder First Name"
+                    type="text"
+                    onChange={this.handleTextChange('firstName')}
+                    required
+                  />
+                </div>
+                <div className='customer-input-container'>
+                  <LabelInput
+                    name="user"
+                    label="Cardholder Last Name"
+                    type="text"
+                    onChange={this.handleTextChange('lastName')}
+                    required
+                  />
+                </div>
+                <div className='customer-input-container'>
+                  <LabelInput
+                    name="credit-card"
+                    label="Credit Card Number"
+                    onChange={this.handleTextChange('cardNum')}
+                    type="number"
+                    required
+                  />
+                </div>
 
-              <div className='customer-input-container'>
-                <LabelInput
-                  name="calendar"
-                  label="Credit Card Expiration Date"
-                  onChange={this.handleTextChange('cardExp')}
-                  type="date"
-                  required
-                />
+                <div className='customer-input-container'>
+                  <LabelInput
+                    name="calendar"
+                    label="Credit Card Expiration Date"
+                    onChange={this.handleTextChange('cardExp')}
+                    type="date"
+                    required
+                  />
               </div>
-
             </div>
-
             <button id='customer-checkout-button'>
               <p>Confirm Checkout</p>
             </button>
+          </form>
           </div>
         </div>
 
@@ -129,11 +134,11 @@ const mapStateToProps = (state) => {
     error: selectShoppingCartError(state)
   }
 };
-//
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     actions: bindActionCreators({ updateCart, deleteCartItem }, dispatch),
-//   };
-// };
 
-export default connect(mapStateToProps, null)(Checkout);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators({ buyCart}, dispatch),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Checkout);

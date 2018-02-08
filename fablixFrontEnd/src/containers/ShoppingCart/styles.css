@@ -2,8 +2,8 @@ body {
   background: #e5e3f2;
 }
 
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
+.quantity::-webkit-inner-spin-button,
+.quantity::-webkit-outer-spin-button {
   opacity: 1;
 }
 
@@ -147,6 +147,7 @@ input[type='number']::-webkit-outer-spin-button {
   font-weight: bold;
   letter-spacing: 3px;
 }
+
 
 .disabled {
   background-color: gray;

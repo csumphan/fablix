@@ -23,12 +23,19 @@
 
 #customer-checkout-button {
   margin-top: 15px;
+  margin:10px;
   width: 70%;
   color: #492277;
   text-transform: uppercase;
   font-size: 18px;
   font-weight: bold;
   letter-spacing: 3px;
+  align-self: flex-end;
+}
+
+#customer-checkout-button:hover {
+  background-color: #e5e3f2;
+  cursor: pointer;
 }
 
 #info-checkout {
@@ -52,6 +59,9 @@
   padding: 40px;
   border-radius: 0.4em;
   background-color: white;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
 }
 
 .customer-input-container {
