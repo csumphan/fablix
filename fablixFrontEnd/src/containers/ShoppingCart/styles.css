@@ -32,6 +32,7 @@ input[type='number']::-webkit-outer-spin-button {
   padding: 0;
   margin: 0;
   border: 1px #cccccc solid;
+  margin-bottom: 30px;
 }
 
 #cart-header {

@@ -8,6 +8,8 @@ import {
   UPDATE_CART,
   UPDATE_CART_ERROR,
   CLEAR_CART,
+  ADD_ONE_CART,
+  DELETE_CART_ITEM,
 } from './constants';
 
 const initialState = {
@@ -24,10 +26,10 @@ const shoppingCartReducer = (state = initialState, action) => {
     case UPDATE_CART: {
       const movieData = action.data;
       const currentCart = [...state.shoppingCartData];
-      console.log('currentCart', currentCart);
+
       for (let i = 0; i < currentCart.length; i++) {
         if (currentCart[i].movie.id === movieData.movie.id) {
-          currentCart[i].count += movieData.count;
+          currentCart[i].count = movieData.count;
           return {
             ...state,
             shoppingCartData: currentCart,
@@ -38,6 +40,43 @@ const shoppingCartReducer = (state = initialState, action) => {
       currentCart.push({
         movie: movieData.movie,
         count: movieData.count
+      });
+      return {
+        ...state,
+        shoppingCartData: currentCart,
+        shoppingCartError: null,
+      };
+    }
+    case ADD_ONE_CART: {
+      const movieData = action.data;
+      const currentCart = [...state.shoppingCartData];
+
+      for (let i = 0; i < currentCart.length; i++) {
+        if (currentCart[i].movie.id === movieData.movie.id) {
+          currentCart[i].count += 1;
+          return {
+            ...state,
+            shoppingCartData: currentCart,
+            shoppingCartError: null,
+          };
+        }
+      }
+      currentCart.push({
+        movie: movieData.movie,
+        count: 1
+      });
+      return {
+        ...state,
+        shoppingCartData: currentCart,
+        shoppingCartError: null,
+      };
+    }
+    case DELETE_CART_ITEM: {
+      const movieData = action.data;
+      // const currentCart = [...state.shoppingCartData];
+
+      const currentCart = state.shoppingCartData.filter((current) => {
+        return current.movie.id !== movieData.movie.id;
       });
       return {
         ...state,
