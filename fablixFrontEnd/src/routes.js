@@ -10,6 +10,8 @@ import ShoppingCart from './containers/ShoppingCart';
 import MovieListPage from './containers/MovieListPage';
 import SearchPage from './containers/SearchPage';
 import BrowsePage from './containers/BrowsePage';
+import SingleMoviePage from './containers/SingleMoviePage';
+import SingleStarPage from './containers/SingleStarPage';
 
 const routes = (
   <ConnectedRouter history={history}>
@@ -22,6 +24,8 @@ const routes = (
         <Route exact path="/MovieList" component={MovieListPage} />
         <Route exact path="/Search" component={SearchPage} />
         <Route exact path="/Browse" component={BrowsePage} />
+        <Route exact path="/SingleMovie" component={SingleMoviePage} />
+        <Route exact path="/SingleStar" component={SingleStarPage} />
       </Switch>
     </div>
   </ConnectedRouter>

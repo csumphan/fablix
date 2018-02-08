@@ -5,6 +5,8 @@ import appReducer from './containers/App/reducer';
 import userReducer from './containers/LoginPage/reducer';
 import moviesReducer from './containers/MovieListPage/reducer';
 import shoppingCartReducer from './containers/ShoppingCart/reducer';
+import singleMovieReducer from './containers/SingleMoviePage/reducer';
+import singleStarReducer from './containers/SingleStarPage/reducer';
 
 const containersReducer = {
   containers: combineReducers({
@@ -13,6 +15,8 @@ const containersReducer = {
     // NOTE: put other app reducers here
     moviesReducer,
     shoppingCartReducer,
+    singleMovieReducer,
+    singleStarReducer,
   }),
 };
 
