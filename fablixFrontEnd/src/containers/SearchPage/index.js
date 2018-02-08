@@ -26,10 +26,6 @@ class Search extends Component {
   onFormSubmit = (e) => {
     e.preventDefault();
     const { title, director, year, star } = this.state;
-    console.log(this.state.title);
-    console.log(this.state.director);
-    console.log(this.state.year);
-    console.log(this.state.star);
 
     let searchTerms = {};
 
@@ -49,11 +45,11 @@ class Search extends Component {
       searchTerms.star = star.split(' ').join('+');
     }
 
-    if (Object.keys(searchTerms).length > 0) {
-      this.props.actions.searchMovies(searchTerms);
-      console.log(this.props);
-      this.props.history.push('/MovieList');
-    }
+    // if (Object.keys(searchTerms).length > 0) {
+    this.props.actions.searchMovies(searchTerms);
+    console.log(this.props);
+    this.props.history.push('/MovieList');
+    // }
   };
   renderForm = () => {
     return (

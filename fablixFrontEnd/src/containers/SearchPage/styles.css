@@ -36,7 +36,6 @@ input:focus {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 150px;
 }
 
 .search-form-container {
@@ -47,6 +46,7 @@ input:focus {
   background-color: white;
   padding: 30px 60px 0px 60px;
   border-radius: 25px;
+  margin: 200px;
 }
 
 .search-form-container > label {

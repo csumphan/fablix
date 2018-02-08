@@ -48,23 +48,24 @@ public class Search extends HttpServlet {
         
         PrintWriter out = response.getWriter();
 		
-		// Get query parameters
-		String queryString = request.getQueryString();
-		
 		JsonObject searchTerms = new JsonObject();
 		
+		String queryString = request.getQueryString();
+		
 		// Split queryString by &
-		String[] keyValues = queryString.split("&");
-		
-		List<String> keyValuesList = new ArrayList<String>(Arrays.asList(keyValues));
-		
-		for (int i = 0; i < keyValuesList.size(); ++i) {
-			// For each element, split by = to get key-value pair
-			String[] kv = keyValues[i].split("=");
-			String key = kv[0];
-			String value = kv[1];
-			searchTerms.addProperty(key, value);
+		if (queryString != "") {
+			String[] keyValues = queryString.split("&");
 			
+			List<String> keyValuesList = new ArrayList<String>(Arrays.asList(keyValues));
+			
+			for (int i = 0; i < keyValuesList.size(); ++i) {
+				// For each element, split by = to get key-value pair
+				String[] kv = keyValues[i].split("=");
+				String key = kv[0];
+				String value = kv[1];
+				searchTerms.addProperty(key, value);
+				
+			}
 		}
 		
 		// Search through database with queries

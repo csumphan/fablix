@@ -1,18 +1,16 @@
 body {
-  background: #E5E3F2
+  background: #e5e3f2;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-
-   opacity: 1;
-
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  opacity: 1;
 }
 
 #shopping-cart-root {
-  margin: 35px 0;
   font-family: 'Nunito', sans-serif;
   padding: 30px;
+  padding-top: 150px;
 }
 .left-column {
   width: 65%;
@@ -34,12 +32,20 @@ input[type=number]::-webkit-outer-spin-button {
   align-items: center;
   padding: 0;
   margin: 0;
+<<<<<<< HEAD
+=======
+  border: 1px #cccccc solid;
+>>>>>>> 74bcdc471ff8fc0b68cccb4b40d37971fd5b7946
   margin-bottom: 30px;
 }
 
 #cart-header {
+<<<<<<< HEAD
   border-radius: 0.5em 0.5em 0 0;
   background-color: #CCCCCC;
+=======
+  background-color: #cccccc;
+>>>>>>> 74bcdc471ff8fc0b68cccb4b40d37971fd5b7946
   width: 100%;
 }
 
@@ -66,8 +72,8 @@ input[type=number]::-webkit-outer-spin-button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 0;
-  border-bottom: 1px #CCCCCC solid;
+  padding: 10px 0;
+  border-bottom: 1px #cccccc solid;
 }
 
 .cart-item form {
@@ -118,7 +124,6 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0;
   margin-right: 5px;
   padding: 0;
-
 }
 
 #checkout {
