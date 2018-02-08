@@ -5,7 +5,7 @@ import {
 } from './constants';
 
 const initialState = {
-  starData: null,
+  starData: { data: {}, movies: [] },
   searchSingleStarLoading: null,
   searchSingleStarLoaded: null,
   searchSingleStarError: null,
