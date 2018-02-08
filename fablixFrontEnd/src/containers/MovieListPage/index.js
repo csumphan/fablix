@@ -4,8 +4,6 @@ import { bindActionCreators } from 'redux';
 import FontAwesome from 'react-fontawesome';
 import { Button } from 'reactstrap';
 
-import ReactPaginate from 'react-paginate';
-
 import {
   searchMovies,
   sortTitleAscending,
@@ -18,6 +16,9 @@ import { selectMoviesData, selectSearchMoviesError } from './selectors';
 
 import { addOneCart } from '../ShoppingCart/actions';
 import { selectShoppingCartData, selectShoppingCartError } from '../ShoppingCart/selectors';
+
+import { searchSingleMovie } from '../SingleMoviePage/actions';
+import { searchSingleStar } from '../SingleStarPage/actions';
 
 import './styles.css';
 
@@ -36,11 +37,6 @@ class MovieList extends Component {
     // const searchTerms = { director: 'david', title: 'e' };
     //
     // this.props.actions.searchMovies(searchTerms);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    console.log('Receiving next props...');
-    console.log(nextProps.moviesData.data);
   }
 
   sortTitleAscending = () => {
@@ -77,13 +73,41 @@ class MovieList extends Component {
     });
   };
 
-  handleShoppingCart = (movie) => () => {
+  handleShoppingCart = (movie) => {
     console.log('You Clicked', movie);
     const movieData = {
       movie,
       count: 1,
     };
     this.props.actions.addOneCart(movieData);
+  };
+
+  handleMovieClick = (movie) => {
+    console.log(movie);
+    let searchTerms = {};
+    searchTerms.title = movie.title.split(' ').join('+');
+    searchTerms.director = movie.director.split(' ').join('+');
+    searchTerms.year = movie.year;
+
+    this.props.actions.searchSingleMovie(searchTerms);
+    this.props.history.push('/SingleMovie');
+  };
+
+  handleGenreClick = (event) => {
+    let searchTerms = { genre: event.target.innerHTML.trim() };
+
+    this.props.actions.searchMovies(searchTerms);
+  };
+
+  handleStarClick = (event) => {
+    let searchTerms = {};
+    searchTerms.star = event.target.innerHTML
+      .trim()
+      .split(' ')
+      .join('+');
+
+    this.props.actions.searchSingleStar(searchTerms);
+    this.props.history.push('/SingleStar');
   };
 
   renderActions = () => {
@@ -165,13 +189,17 @@ class MovieList extends Component {
         console.log('this', this);
         if (index % 2 === 0) {
           const movieStars = movie.stars.split(',').map((star, i) => (
-            <div key={i} className="movie-star movie-star-alternate">
+            <div key={i} onClick={this.handleStarClick} className="movie-star movie-star-alternate">
               {star}
             </div>
           ));
 
           const movieGenres = movie.genres.split(',').map((genre, i) => (
-            <div key={i} className="movie-genre movie-genre-alternate">
+            <div
+              key={i}
+              onClick={this.handleGenreClick}
+              className="movie-genre movie-genre-alternate"
+            >
               {genre}
             </div>
           ));
@@ -179,7 +207,7 @@ class MovieList extends Component {
           return (
             <div key={index} className="movie-container alternate">
               <div className="movie-header">
-                <h1 className="movie-title">
+                <h1 className="movie-title" onClick={() => this.handleMovieClick(movie)}>
                   {movie.title} ({movie.year})
                 </h1>
                 <div className="movie-rating movie-rating-alternate">{movie.rating}</div>
@@ -193,7 +221,7 @@ class MovieList extends Component {
                 <h2>Stars: {movieStars}</h2>
               </div>
               <div className="add-to-cart">
-                <Button onClick={this.handleShoppingCart(movie)} className="button">
+                <Button onClick={() => this.handleShoppingCart(movie)} className="button">
                   Add To Cart
                 </Button>
               </div>
@@ -201,20 +229,20 @@ class MovieList extends Component {
           );
         } else {
           const movieStars = movie.stars.split(',').map((star, i) => (
-            <div key={i} className="movie-star">
+            <div key={i} onClick={this.handleStarClick} className="movie-star">
               {star}
             </div>
           ));
 
           const movieGenres = movie.genres.split(',').map((genre, i) => (
-            <div key={i} className="movie-genre">
+            <div key={i} onClick={this.handleGenreClick} className="movie-genre">
               {genre}
             </div>
           ));
           return (
             <div key={index} className="movie-container movie-container-alternate">
               <div className="movie-header">
-                <h1 className="movie-title">
+                <h1 className="movie-title" onClick={() => this.handleMovieClick(movie)}>
                   {movie.title} ({movie.year})
                 </h1>
                 <div className="movie-rating">{movie.rating}</div>
@@ -228,7 +256,7 @@ class MovieList extends Component {
                 <h2>Stars: {movieStars}</h2>
               </div>
               <div className="add-to-cart">
-                <Button onClick={this.handleShoppingCart(movie)} className="button">
+                <Button onClick={() => this.handleShoppingCart(movie)} className="button">
                   Add To Cart
                 </Button>
               </div>
@@ -279,6 +307,8 @@ const mapDispatchToProps = (dispatch) => {
         sortYearAscending,
         sortYearDescending,
         addOneCart,
+        searchSingleMovie,
+        searchSingleStar,
       },
       dispatch,
     ),

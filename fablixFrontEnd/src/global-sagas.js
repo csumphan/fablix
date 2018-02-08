@@ -3,12 +3,16 @@ import { fork, all } from 'redux-saga/effects';
 import appSagas from './containers/App/sagas';
 import userSagas from './containers/LoginPage/sagas';
 import moviesSaga from './containers/MovieListPage/sagas';
+import singleMovieSaga from './containers/SingleMoviePage/sagas';
+import singleStarSaga from './containers/SingleStarPage/sagas';
 
 const sagas = [
   appSagas,
   userSagas,
   // NOTE: put other app sagas here
   moviesSaga,
+  singleMovieSaga,
+  singleStarSaga,
 ];
 
 function* globalSagas() {
