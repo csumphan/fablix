@@ -5,7 +5,7 @@ import FontAwesome from 'react-fontawesome';
 
 import CartItem from '../../components/CartItem';
 
-import { updateCart } from './actions';
+import { updateCart, deleteCartItem } from './actions';
 import { selectShoppingCartData, selectShoppingCartError } from './selectors';
 
 import './styles.css';
@@ -20,15 +20,42 @@ class ShoppingCart extends Component {
     };
   }
 
+  getCartCount = () => {
+    const movies = this.props.cartData;
+    let count = 0;
+    for (let i = 0; i < movies.length; i++) {
+      count += movies[i].count;
+    }
+    return count;
+  }
+
+  deleteItem = (movie) => (e) => {
+      e.preventDefault();
+      const movieData = {
+        movie
+      };
+      this.props.actions.deleteCartItem(movieData);
+  }
+
   changeCount = (movie) => (count) => (e) => {
     e.preventDefault();
-    const intCount = Number(count);
 
-    const movieData = {
-      movie,
-      count: intCount
-    };
-    this.props.actions.updateCart(movieData);
+    const intCount = Number(count);
+    if (intCount >= 1) {
+      const movieData = {
+        movie,
+        count: intCount
+      };
+
+      this.props.actions.updateCart(movieData);
+    }
+    else {
+      const movieData = {
+        movie
+      };
+      this.props.actions.deleteCartItem(movieData);
+    }
+
   }
 
   render() {
@@ -40,8 +67,10 @@ class ShoppingCart extends Component {
         <CartItem
           id={lastItem}
           movieName={movie.movie.title}
+          movieYear={movie.movie.year}
           count={movie.count}
           updateCount={this.changeCount(movie.movie)}
+          deleteItem={this.deleteItem(movie.movie)}
          />
       );
     });
@@ -51,7 +80,7 @@ class ShoppingCart extends Component {
         <div className='left-column'>
           <div id="cart">
             <div id="cart-header">
-              <h2>Your Cart</h2>
+              <h2>Your Cart ({this.getCartCount()})</h2>
             </div>
             <div id="movies">
               {cartMovies}
@@ -97,7 +126,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    actions: bindActionCreators({ updateCart }, dispatch),
+    actions: bindActionCreators({ updateCart, deleteCartItem }, dispatch),
   };
 };
 

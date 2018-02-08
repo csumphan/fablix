@@ -16,7 +16,7 @@ import {
 
 import { selectMoviesData, selectSearchMoviesError } from './selectors';
 
-import { updateCart } from '../ShoppingCart/actions';
+import { addOneCart } from '../ShoppingCart/actions';
 import { selectShoppingCartData, selectShoppingCartError } from '../ShoppingCart/selectors';
 
 import './styles.css';
@@ -80,10 +80,9 @@ class MovieList extends Component {
   handleShoppingCart = (movie) => () => {
     console.log('You Clicked', movie);
     const movieData = {
-      movie,
-      count: 1
+      movie
     };
-    this.props.actions.updateCart(movieData);
+    this.props.actions.addOneCart(movieData);
   };
 
   renderActions = () => {
@@ -272,7 +271,7 @@ const mapDispatchToProps = (dispatch) => {
         sortTitleDescending,
         sortYearAscending,
         sortYearDescending,
-        updateCart,
+        addOneCart,
       },
       dispatch,
     ),

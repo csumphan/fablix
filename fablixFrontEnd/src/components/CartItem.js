@@ -7,8 +7,17 @@ class CartItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: this.props.count
+      count: 0
     };
+  }
+
+  componentWillMount() {
+    this.setState({count: this.props.count});
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
+    this.setState({count: nextProps.count});
   }
 
   onFocus = () => {
@@ -29,7 +38,7 @@ class CartItem extends Component {
 
     return (
       <div id={this.props.id} className="cart-item">
-        <p className='cart-movie'>{this.props.movieName}</p>
+        <p className='cart-movie'>{`${this.props.movieName} (${this.props.movieYear})`}</p>
         <form onSubmit={this.props.updateCount(this.state.count)}>
           <input onChange={this.onChange} className='quantity' type="number" value={this.state.count} />
           <button className='cart-button'>
@@ -38,7 +47,7 @@ class CartItem extends Component {
               <FontAwesome name='edit' />
             </span>
           </button>
-          <button className='cart-button remove'>
+          <button onClick={this.props.deleteItem} className='cart-button remove'>
             <span className='button-label'>
               <p>Remove</p>
               <FontAwesome name='trash' />
