@@ -81,7 +81,7 @@ class MovieList extends Component {
     console.log('You Clicked', movie);
     const movieData = {
       movie,
-      count: 1
+      count: 1,
     };
     this.props.actions.updateCart(movieData);
   };
@@ -184,7 +184,8 @@ class MovieList extends Component {
                 </h1>
                 <div className="movie-rating movie-rating-alternate">{movie.rating}</div>
               </div>
-              <div className="movie-director">Directed By: {movie.director}</div>
+              <div className="movie-director">Directed By: {movie.director} </div>
+              <div className="movie-director">Movie ID: {movie.id}</div>
               <div className="movie-genres">
                 <h2>Genres: {movieGenres}</h2>
               </div>
@@ -192,7 +193,9 @@ class MovieList extends Component {
                 <h2>Stars: {movieStars}</h2>
               </div>
               <div className="add-to-cart">
-                <Button onClick={this.handleShoppingCart(movie)} className="button">Add To Cart</Button>
+                <Button onClick={this.handleShoppingCart(movie)} className="button">
+                  Add To Cart
+                </Button>
               </div>
             </div>
           );
@@ -217,6 +220,7 @@ class MovieList extends Component {
                 <div className="movie-rating">{movie.rating}</div>
               </div>
               <div className="movie-director">Directed By: {movie.director}</div>
+              <div className="movie-director">Movie ID: {movie.id}</div>
               <div className="movie-genres">
                 <h2>Genres: {movieGenres}</h2>
               </div>
@@ -224,7 +228,9 @@ class MovieList extends Component {
                 <h2>Stars: {movieStars}</h2>
               </div>
               <div className="add-to-cart">
-                <Button onClick={this.handleShoppingCart(movie)} className="button">Add To Cart</Button>
+                <Button onClick={this.handleShoppingCart(movie)} className="button">
+                  Add To Cart
+                </Button>
               </div>
             </div>
           );
@@ -238,10 +244,10 @@ class MovieList extends Component {
       }
 
       return (
-        <div>
+        <div className="movies-list-container">
           <h1 className="page-title">
+            Movies
             <FontAwesome name="rocket" />
-            Movie List Page
           </h1>
           <div className="action-bar-container">{this.renderActions()}</div>
           <div className="pagination-bar-container">{this.renderPagination(pageNumbers)}</div>

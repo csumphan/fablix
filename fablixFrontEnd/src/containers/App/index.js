@@ -8,8 +8,9 @@ import { getAPIData } from './actions';
 import { selectApiData } from './selectors';
 
 import LoginPage from '../LoginPage';
-import MovieList from '../MovieList';
-import Search from '../Search';
+import MovieListPage from '../MovieListPage';
+import SearchPage from '../SearchPage';
+import BrwosePage from '../BrowsePage';
 import './styles.css';
 
 const getMyIp = (apiData) => apiData && apiData.origin && apiData.origin.split(', ')[1];
@@ -23,8 +24,9 @@ class App extends Component {
     return (
       <HashRouter>
         <Route path="/" component={LoginPage} />
-        <Route path="/MovieList" component={MovieList} />
-        <Route path="/Search" component={Search} />
+        <Route path="/MovieList" component={MovieListPage} />
+        <Route path="/Search" component={SearchPage} />
+        <Route path="/Browse" component={BrowsePage} />
       </HashRouter>
     );
   }

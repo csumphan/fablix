@@ -10,6 +10,12 @@ body {
 .page-title {
   font-size: 30px;
   text-align: center;
+  letter-spacing: 25px;
+  padding: 10px;
+}
+
+.movies-list-container {
+  padding-top: 100px;
 }
 
 .movies-container {
@@ -33,6 +39,15 @@ body {
 
 .movie-title {
   letter-spacing: 5px;
+}
+
+.movie-title:hover {
+  cursor: pointer;
+  color: darkgrey;
+
+  transition-property: color;
+  transition-duration: 0.1s;
+  transition-timing-function: linear;
 }
 
 .movie-rating {
