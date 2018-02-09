@@ -33,9 +33,9 @@ export const clearCart = () => ({
   type: CLEAR_CART,
 });
 
-export const buyCart = (cred) => ({
+export const buyCart = (data) => ({
   type: BUY_CART,
-  cred
+  data
 });
 
 export const buyCartError = (error) => ({

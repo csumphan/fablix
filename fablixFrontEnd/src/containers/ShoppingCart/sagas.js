@@ -2,11 +2,13 @@ import { takeLatest, call, put } from 'redux-saga/effects';
 import axios from 'axios';
 import queryString from 'query-string';
 
-import { loginUserLoaded, loginUserError } from './actions';
+import { buyCart, buyCartError, buyCartSuccess, clearCart } from './actions';
 import { api } from '../../config';
 
 import {
-  LOGIN_USER,
+  BUY_CART,
+  BUY_CART_SUCCESS,
+  BUY_CART_ERROR,
 } from './constants';
 
 /*
@@ -14,52 +16,49 @@ import {
   @type: JS object
   { result: resultObj, error: errorObj }
 */
-// const postLogin = (credential) => {
-//   console.log('jsdfs', credential);
-//   console.log(`${api}`);
-//
-//   const data = queryString.stringify({
-//     email: credential.email,
-//     password: credential.password
-//   });
-//   console.log('data',data);
-//
-//   return axios({
-//     method: 'post',
-//     headers: {
-//       'Content-Type': 'application/x-www-form-urlencoded'
-//     },
-//     url: `${api}/Login`,
-//     data
-//   })
-//     .then((res) => {
-//       console.log('arrrrr');
-//       console.log(res);
-//       return res;
-//     })
-//     .catch((error) => {
-//       console.log('err');
-//       console.log(error);
-//       return error;
-//     });
-// };
+const postSale = (saleInfo) => {
+  console.log('jsdfs', saleInfo);
+  console.log(`${api}`);
 
-function* buyCart(action) {
-  console.log('action', action);
-  // const result = yield call(postLogin, action.credential);
-  // console.log('result', result);
-  // if (result.data.error) {
-  //   console.log('result.data.error', result.data.error);
-  //   yield put(loginUserError(result.data.error));
-  // }
-  // else {
-  //   yield put(loginUserLoaded(result));
-  // }
-  yield put();
+  const data = queryString.stringify({
+    firstName: saleInfo.firstName,
+    lastName: saleInfo.lastName,
+    cardNum: saleInfo.cardNum,
+    cardExp: saleInfo.cardExp,
+    saleData: saleInfo.saleData,
+    userId: saleInfo.userId
+  });
+  console.log('data',data);
+
+  return axios({
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    url: `${api}/Sale`,
+    data
+  })
+    .then((res) => {
+      return res;
+    })
+    .catch((error) => {
+      return error;
+    });
+};
+
+function* makeSale(action) {
+  const result = yield call(postSale, action.data);
+  if (result.data.error) {
+    yield put(buyCartError(result.data.error));
+  }
+  else {
+    yield put(clearCart());
+    yield put(buyCartSuccess(result));
+  }
 }
 
 function* cartSagas() {
-  yield takeLatest(BUY_CART, buyCart);
+  yield takeLatest(BUY_CART, makeSale);
 }
 
 export default cartSagas;

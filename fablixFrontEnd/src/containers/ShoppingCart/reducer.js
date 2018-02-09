@@ -18,6 +18,7 @@ import {
 const initialState = {
   shoppingCartData: [],
   shoppingCartError: null,
+  buyCartData: null,
   buyCartError: null,
   buyCartLoading: false,
   buyCartLoaded: false,
@@ -113,6 +114,7 @@ const shoppingCartReducer = (state = initialState, action) => {
       console.log('aaaaa', action);
       return {
         ...state,
+        buyCartData: null,
         buyCartLoading: false,
         buyCartLoaded: false,
         buyCartError: action.error,

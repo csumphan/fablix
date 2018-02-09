@@ -13,6 +13,7 @@ import BrowsePage from './containers/BrowsePage';
 import SingleMoviePage from './containers/SingleMoviePage';
 import SingleStarPage from './containers/SingleStarPage';
 import Checkout from './containers/Checkout';
+import Confirmation from './containers/Confirmation';
 
 const routes = (
   <ConnectedRouter history={history}>
@@ -22,6 +23,7 @@ const routes = (
         <Route exact path="/" component={LoginPage} />
         <Route exact path="/Cart" component={ShoppingCart} />
         <Route exact path="/Checkout" component={Checkout} />
+        <Route exact path="/Confirmation" component={Confirmation} />
         {/* NOTE: put other app routes here */}
         <Route exact path="/MovieList" component={MovieListPage} />
         <Route exact path="/Search" component={SearchPage} />

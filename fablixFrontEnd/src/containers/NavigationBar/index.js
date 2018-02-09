@@ -5,6 +5,7 @@ import FontAwesome from 'react-fontawesome';
 import { Button } from 'reactstrap';
 
 import { Link } from 'react-router-dom';
+import { selectShoppingCartData, selectShoppingCartError } from '../ShoppingCart/selectors';
 
 import './styles.css';
 
@@ -17,19 +18,29 @@ class Navigation extends Component {
     };
   }
 
+  getCartCount = () => {
+    const movies = this.props.cartData;
+    let count = 0;
+    for (let i = 0; i < movies.length; i++) {
+      count += movies[i].count;
+    }
+    return count;
+  }
+
   render() {
     const items = [
       { icon: 'home', name: 'Home' },
       { icon: 'search', name: 'Search' },
       { icon: 'eye', name: 'Browse' },
-      { icon: 'shopping-cart', name: 'Cart' },
+      { icon: 'shopping-cart', name: `Cart` },
     ];
 
     const navItems = items.map((item, index) => {
       const { icon, name } = item;
       const href = `/${name}`;
-      console.log(index);
-      console.log(this.state.activeIndex);
+
+      const cartCount = name === 'Cart' ? ` (${this.getCartCount()})` : '';
+      console.log(cartCount);
 
       if (index === this.state.activeIndex) {
         return (
@@ -40,7 +51,7 @@ class Navigation extends Component {
             className="nav-item nav-item-active"
           >
             <FontAwesome className="icon" name={icon} />
-            {name}
+            {`${name}${cartCount}`}
           </Link>
         );
       }
@@ -52,7 +63,7 @@ class Navigation extends Component {
           className="nav-item"
         >
           <FontAwesome className="icon" name={icon} />
-          {name}
+          {`${name}${cartCount}`}
         </Link>
       );
     });
@@ -61,4 +72,11 @@ class Navigation extends Component {
   }
 }
 
-export default connect(null, null)(Navigation);
+const mapStateToProps = (state) => {
+  return {
+    cartData: selectShoppingCartData(state),
+    error: selectShoppingCartError(state)
+  }
+};
+
+export default connect(mapStateToProps, null)(Navigation);

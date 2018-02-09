@@ -7,6 +7,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 /**
  * Servlet implementation class Sale
@@ -52,6 +55,17 @@ public class Sale extends HttpServlet {
         String lastName = request.getParameter("lastName");
         String cardNum = request.getParameter("cardNum");
         String cardExp = request.getParameter("cardExp");
+        String userId = request.getParameter("userId");
+        String saleData = request.getParameter("saleData");
+        
+        System.out.println(firstName);
+        System.out.println(lastName);
+        System.out.println(cardNum);
+        System.out.println(cardExp);
+        System.out.println(userId);
+        System.out.println(saleData);
+        
+        
         
         response.setContentType("application/json"); // Response mime type
         
@@ -77,37 +91,70 @@ public class Sale extends HttpServlet {
             	searchQuery = "SELECT * FROM creditcards WHERE firstName = '" + firstName + "' AND lastName = '" + lastName + 
         				"' AND expiration = '" + cardExp + "' AND id = '" + cardNum + "'";
             }
+            
+            System.out.println(searchQuery);
              
             
             ResultSet rs = statement.executeQuery(searchQuery);
             
             if (rs.next()) {
-            		JsonObject userInfo = new JsonObject();
+            		JsonObject saleInfo = new JsonObject();
+            		
+                String[] array = saleData.split("-", -1);
+                
+                System.out.println(array[0]);
+                JsonParser parser = new JsonParser();
+                
+                String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+                System.out.println("current date");
+                System.out.println(date);
+                
+                for (int i = 0; i < array.length; i++) {
+//                	INSERT INTO sales (customerId, movieId, saleDate)
+//                   VALUES ('961', 'tt0473100', '2018-02-08');
+                		JsonObject m = parser.parse(array[i]).getAsJsonObject();
+                		
+                		String movieId = m.get("movieId").getAsString().replaceAll("\"", "");
+                		System.out.println("MOVIEZZZZ");
+                		System.out.println(movieId);
+                		System.out.println(m.get("count"));
+                		
+                		String insertQuery = "INSERT INTO sales (customerId, movieId, saleDate) VALUES ('" + userId + 
+                				"'," + " '" + movieId + "', " + "'" + date + "')";
+                		
+                		int intCount = m.get("count").getAsInt();
+                		for (int x = 0; x < intCount; x++) {
+                			System.out.println(insertQuery);
+                			Statement insert_statement = dbcon.createStatement();
+                			insert_statement.executeUpdate(insertQuery);
+                		}
+                }
             		
             		String m_id = rs.getString("id");
             		String m_firstName = rs.getString("firstName");
             		String m_lastName = rs.getString("lastName");
             		String m_cardExp = rs.getString("expiration");
-            		
+            		System.out.println("Valid credentials!");
             		System.out.println(m_id);
             		System.out.println(m_firstName);
             		System.out.println(m_lastName);
             		System.out.println(m_cardExp);
             		
-            		userInfo.addProperty("id", m_id);
-            		userInfo.addProperty("firstName", m_firstName);
-            		userInfo.addProperty("lastName", m_lastName);
+            		saleInfo.addProperty("status", "success");
+//            		userInfo.addProperty("firstName", m_firstName);
+//            		userInfo.addProperty("lastName", m_lastName);
             		
-            		request.getSession().setAttribute("id", m_id);
-            		request.getSession().setAttribute("firstName", m_firstName);
-            		request.getSession().setAttribute("lastName", m_lastName);
+//            		request.getSession().setAttribute("id", m_id);
+//            		request.getSession().setAttribute("firstName", m_firstName);
+//            		request.getSession().setAttribute("lastName", m_lastName);
             		
-            		out.write(userInfo.toString());
+            		out.write(saleInfo.toString());
             }
             
             else {
+            		System.out.println("Invalid Credit Card Info");
             		JsonObject errorInfo = new JsonObject();
-            		errorInfo.addProperty("error", "Incorrect email/password");
+            		errorInfo.addProperty("error", "Invalid Credit Card Information");
             		
             		out.write(errorInfo.toString());
             }

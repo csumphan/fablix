@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.PrintWriter;
+
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 /**
  * Servlet implementation class Login
@@ -50,7 +54,13 @@ public class Login extends HttpServlet {
         
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        String jsonLine = "{\"movieId\":\"tt0100275\",\"count\":1}";
+        JsonParser parser = new JsonParser();
+        JsonObject o = parser.parse(jsonLine).getAsJsonObject();
         
+        System.out.println(o);
+        System.out.println("hihihi");
+        System.out.println(o.get("movieId"));
         response.setContentType("application/json"); // Response mime type
         
         PrintWriter out = response.getWriter();

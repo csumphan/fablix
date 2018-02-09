@@ -6,6 +6,8 @@ import FontAwesome from 'react-fontawesome';
 import { loginUser } from './actions';
 import { selectUserData, selectUserLoginError } from './selectors';
 
+import { clearCart } from '../ShoppingCart/actions';
+
 import LabelInput from '../../components/LabelInput';
 
 import './styles.css';
@@ -38,7 +40,7 @@ class LoginPage extends Component {
   render() {
     return (
       <div id="container-root">
-        <div id="container">
+        <div id="confirmation-container">
           <div id="intro-container">
             <h1 id="app-title">Fablix</h1>
             <p id="app-one-liner">
@@ -105,7 +107,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   console.log('dispatch', dispatch);
   return {
-    actions: bindActionCreators({ loginUser }, dispatch),
+    actions: bindActionCreators({ loginUser, clearCart }, dispatch),
   };
 };
 

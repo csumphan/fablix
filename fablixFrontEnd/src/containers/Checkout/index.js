@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import FontAwesome from 'react-fontawesome';
 
+import { getCookie } from '../../libs/cookie';
+
 import NonEditCartItem from '../../components/NonEditCartItem';
 import LabelInput from '../../components/LabelInput';
 
 import { buyCart } from '../ShoppingCart/actions';
 
-import { selectShoppingCartData, selectShoppingCartError } from '../ShoppingCart/selectors';
+import { selectShoppingCartData, selectShoppingCartError, selectBuyCartError, selectBuyCartData } from '../ShoppingCart/selectors';
 
 import './styles.css';
 
@@ -25,6 +27,39 @@ class Checkout extends Component {
     };
   }
 
+  onComponentWillMount() {
+    const userString = getCookie("user");
+
+    if (userString === '') {
+      console.log('user not logged in');
+    }
+    else {
+      console.log('user is logged in');
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log('nextProps', nextProps.buyCartData);
+
+    if (nextProps.buyCartData && nextProps.buyCartData.data.status === "success") {
+      console.log('get redirected here');
+      this.props.history.push('/Confirmation');
+    }
+  }
+
+  getSaleData() {
+    return this.props.cartData.map((current, index) => {
+      const saleData = {
+        movieId: current.movie.id,
+        movieName: current.movie.name,
+        movieYear: current.movie.year,
+        count: current.count
+      };
+
+      return JSON.stringify(saleData);
+    });
+  }
+
   getCartCount = () => {
     const movies = this.props.cartData;
     let count = 0;
@@ -39,8 +74,32 @@ class Checkout extends Component {
     this.setState({ [field]: e.target.value });
   };
 
-  buyItems = () => {
-    console.log('fuck you');
+  buyItems = (e) => {
+    e.preventDefault();
+
+    const stripCardNum = this.state.cardNum.replace(/\D/g,'');
+    const userString = getCookie("user");
+    const userData = JSON.parse(userString);
+
+    const saleDataArray = this.getSaleData();
+
+    const saleData = saleDataArray.join('-');
+
+    console.log('saleData', saleData);
+
+    const buyData = {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      cardNum: stripCardNum,
+      cardExp: this.state.cardExp,
+      userId: userData.id,
+      saleData
+    };
+
+    this.props.actions.buyCart(buyData);
+    // console.log(getCookie("user"));
+    // console.log(typeof getCookie("user"));
+    // console.log('fuck you');
   }
 
 
@@ -116,6 +175,7 @@ class Checkout extends Component {
                   />
               </div>
             </div>
+            <p className="error-msg">{this.props.buyError}</p>
             <button id='customer-checkout-button'>
               <p>Confirm Checkout</p>
             </button>
@@ -131,7 +191,9 @@ class Checkout extends Component {
 const mapStateToProps = (state) => {
   return {
     cartData: selectShoppingCartData(state),
-    error: selectShoppingCartError(state)
+    buyCartData: selectBuyCartData(state),
+    error: selectShoppingCartError(state),
+    buyError: selectBuyCartError(state),
   }
 };
 
