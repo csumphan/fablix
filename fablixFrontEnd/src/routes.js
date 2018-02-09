@@ -14,22 +14,26 @@ import SingleMoviePage from './containers/SingleMoviePage';
 import SingleStarPage from './containers/SingleStarPage';
 import Checkout from './containers/Checkout';
 import Confirmation from './containers/Confirmation';
+import HomePage from './containers/HomePage';
 
 const routes = (
   <ConnectedRouter history={history}>
     <div>
-      <NavigationBar />
       <Switch>
         <Route exact path="/" component={LoginPage} />
-        <Route exact path="/Cart" component={ShoppingCart} />
-        <Route exact path="/Checkout" component={Checkout} />
-        <Route exact path="/Confirmation" component={Confirmation} />
-        {/* NOTE: put other app routes here */}
-        <Route exact path="/MovieList" component={MovieListPage} />
-        <Route exact path="/Search" component={SearchPage} />
-        <Route exact path="/Browse" component={BrowsePage} />
-        <Route exact path="/SingleMovie" component={SingleMoviePage} />
-        <Route exact path="/SingleStar" component={SingleStarPage} />
+        <div>
+          <NavigationBar />
+          <Route exact path="/Home" component={HomePage} />
+          <Route exact path="/Cart" component={ShoppingCart} />
+          <Route exact path="/Checkout" component={Checkout} />
+          <Route exact path="/Confirmation" component={Confirmation} />
+          {/* NOTE: put other app routes here */}
+          <Route exact path="/MovieList" component={MovieListPage} />
+          <Route exact path="/Search" component={SearchPage} />
+          <Route exact path="/Browse" component={BrowsePage} />
+          <Route exact path="/SingleMovie" component={SingleMoviePage} />
+          <Route exact path="/SingleStar" component={SingleStarPage} />
+        </div>
       </Switch>
     </div>
   </ConnectedRouter>
