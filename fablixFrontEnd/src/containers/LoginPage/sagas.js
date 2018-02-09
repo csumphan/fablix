@@ -6,24 +6,17 @@ import { loginUserLoaded, loginUserError } from './actions';
 import { clearCart } from '../ShoppingCart/actions';
 import { api } from '../../config';
 
-import {
-  LOGIN_USER,
-} from './constants';
+import { LOGIN_USER, CLEAR_USER_REDUCER, CLEAR_USER_REDUCER_LOADED } from './constants';
 
-/*
-  Data downloading using pure JS fetch
-  @type: JS object
-  { result: resultObj, error: errorObj }
-*/
 const postLogin = (credential) => {
   console.log('jsdfs', credential);
   console.log(`${api}`);
 
   const data = queryString.stringify({
     email: credential.email,
-    password: credential.password
+    password: credential.password,
   });
-  console.log('data',data);
+  console.log('data', data);
 
   return axios({
     method: 'post',
@@ -32,7 +25,7 @@ const postLogin = (credential) => {
     },
     url: `${api}/Login`,
     withCredentials: true,
-    data
+    data,
   })
     .then((res) => {
       console.log('arrrrr');
@@ -53,8 +46,7 @@ function* loginUser(action) {
   if (result.data.error) {
     console.log('result.data.error', result.data.error);
     yield put(loginUserError(result.data.error));
-  }
-  else {
+  } else {
     yield put(clearCart());
     const stringUser = JSON.stringify(result.data);
     document.cookie = `user=${stringUser}`;
@@ -63,8 +55,13 @@ function* loginUser(action) {
   }
 }
 
+function* clearUserReducer() {
+  yield put({ type: CLEAR_USER_REDUCER_LOADED });
+}
+
 function* userSagas() {
   yield takeLatest(LOGIN_USER, loginUser);
+  yield takeLatest(CLEAR_USER_REDUCER, clearUserReducer);
 }
 
 export default userSagas;

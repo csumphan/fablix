@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import FontAwesome from 'react-fontawesome';
 
-import { loginUser } from './actions';
+import { loginUser, clearUserReducer } from './actions';
 import { selectUserData, selectUserLoginError } from './selectors';
 
 import LabelInput from '../../components/LabelInput';
@@ -18,13 +18,27 @@ class LoginPage extends Component {
       email: '',
       password: '',
     };
+
+    console.log('constructing');
+
+    this.props.actions.clearUserReducer();
   }
 
   handleTextChange = (field) => (e) => {
     this.setState({ [field]: e.target.value });
   };
 
+  componentWillReceiveProps(nextProps) {
+    console.log('receiving props...');
+    if (nextProps.userData && !nextProps.userLoginError) {
+      this.props.history.push('/Home');
+    }
+  }
+
   handleLogin = (e) => {
+    if (this.state.success) {
+      this.props.history.push('/Home');
+    }
     e.preventDefault();
 
     const cred = {
@@ -105,7 +119,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   console.log('dispatch', dispatch);
   return {
-    actions: bindActionCreators({ loginUser }, dispatch),
+    actions: bindActionCreators({ loginUser, clearUserReducer }, dispatch),
   };
 };
 

@@ -1,6 +1,12 @@
 // import { fromJS } from 'immutable';
 
-import { LOGIN_USER, LOGIN_USER_LOADED, LOGIN_USER_ERROR } from './constants';
+import {
+  LOGIN_USER,
+  LOGIN_USER_LOADED,
+  LOGIN_USER_ERROR,
+  CLEAR_USER_REDUCER,
+  CLEAR_USER_REDUCER_LOADED,
+} from './constants';
 
 const initialState = {
   userData: null,
@@ -32,6 +38,14 @@ const userReducer = (state = initialState, action) => {
         userLoginLoading: false,
         userLoginLoaded: false,
         userLoginError: action.error,
+      };
+    case CLEAR_USER_REDUCER_LOADED:
+      console.log('cleared user reducer');
+      return {
+        userData: null,
+        userLoginLoading: false,
+        userLoginLoaded: false,
+        userLoginError: null,
       };
     default:
       return state;

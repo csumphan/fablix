@@ -1,0 +1,48 @@
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.redirects-container {
+  min-width: 400px;
+  width: 30%;
+  display: flex;
+  background-color: white;
+  padding: 60px 200px;
+  border-radius: 25px;
+  margin: 200px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.redirects-title {
+  font-size: 50px;
+  font-weight: lighter;
+  letter-spacing: 5px;
+}
+
+.buttons-container {
+  display: flex;
+}
+
+.redirect {
+  font-weight: lighter;
+  margin: 50px;
+  text-decoration: none;
+  padding: 30px;
+  font-size: 50px;
+  border: 1px solid black;
+  border-radius: 15px;
+  color: black;
+  display: flex;
+
+  transition: background-color 0.1s linear, color 0.1s linear;
+}
+
+.redirect:hover {
+  background-color: black;
+  color: white;
+}
