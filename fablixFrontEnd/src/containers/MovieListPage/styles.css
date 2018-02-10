@@ -161,6 +161,18 @@ body {
   padding-top: 10px;
 }
 
+.prev-next-container {
+  font-size: 30px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.prev-next-container > .button {
+  border-radius: 0px;
+  background-color: #9792ba;
+}
+
 .pagination-bar-container {
   display: flex;
   font-size: 15px;

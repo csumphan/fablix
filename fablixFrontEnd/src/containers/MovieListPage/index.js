@@ -33,10 +33,6 @@ class MovieList extends Component {
       moviesPerPage: 5,
       currentMoviesPerPage: 5,
     };
-
-    // const searchTerms = { director: 'david', title: 'e' };
-    //
-    // this.props.actions.searchMovies(searchTerms);
   }
 
   sortTitleAscending = () => {
@@ -57,6 +53,19 @@ class MovieList extends Component {
 
   onMoviesPerPage = (n) => {
     console.log(n);
+  };
+
+  handlePrevClick = (event) => {
+    if (this.state.currentPage > 1) {
+      this.setState({ currentPage: this.state.currentPage - 1 });
+    }
+  };
+
+  handleNextClick = (event) => {
+    const totalMoviesCount = this.props.moviesData.data.length / this.state.currentMoviesPerPage;
+    if (this.state.currentPage < totalMoviesCount) {
+      this.setState({ currentPage: this.state.currentPage + 1 });
+    }
   };
 
   handlePageClick = (event) => {
@@ -289,6 +298,14 @@ class MovieList extends Component {
             <FontAwesome name="rocket" />
           </h1>
           <div className="action-bar-container">{this.renderActions()}</div>
+          <div className="prev-next-container">
+            <div className="button" onClick={this.handlePrevClick}>
+              PREV
+            </div>
+            <div className="button" onClick={this.handleNextClick}>
+              NEXT
+            </div>
+          </div>
           <div className="pagination-bar-container">{this.renderPagination(pageNumbers)}</div>
           <div className="movies-container">{moviesData}</div>
         </div>
