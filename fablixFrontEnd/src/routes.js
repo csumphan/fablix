@@ -22,7 +22,7 @@ const routes = (
   <ConnectedRouter history={history}>
     <div>
       <Switch>
-        <Route exact path="/" component={LoginPage} />
+        <Route exact path="/Project1" component={LoginPage} />
         <Route exact path="/reports/LikePredicate" component={LikePredicate} />
         <div>
           <NavigationBar />
