@@ -94,14 +94,19 @@ class MovieList extends Component {
   };
 
   handleGenreClick = (event) => {
-    let searchTerms = { genre: event.target.innerHTML.trim() };
+    const genre = event.target.firstChild.data;
+    let searchTerms = {
+      genre: genre.trim(),
+    };
 
     this.props.actions.searchMovies(searchTerms);
   };
 
   handleStarClick = (event) => {
     let searchTerms = {};
-    searchTerms.star = event.target.innerHTML
+    const star = event.target.firstChild.data;
+    console.log(`STAR: ${star}`);
+    searchTerms.star = star
       .trim()
       .split(' ')
       .join('+');
@@ -221,7 +226,10 @@ class MovieList extends Component {
                 <h2>Stars: {movieStars}</h2>
               </div>
               <div className="add-to-cart">
-                <Button onClick={() => this.handleShoppingCart(movie)} className="button">
+                <Button
+                  onClick={() => this.handleShoppingCart(movie)}
+                  className="add-to-cart-button"
+                >
                   Add To Cart
                 </Button>
               </div>
@@ -256,7 +264,10 @@ class MovieList extends Component {
                 <h2>Stars: {movieStars}</h2>
               </div>
               <div className="add-to-cart">
-                <Button onClick={() => this.handleShoppingCart(movie)} className="button">
+                <Button
+                  onClick={() => this.handleShoppingCart(movie)}
+                  className="add-to-cart-button"
+                >
                   Add To Cart
                 </Button>
               </div>

@@ -63,6 +63,7 @@ public class Search extends HttpServlet {
 				String[] kv = keyValues[i].split("=");
 				String key = kv[0];
 				String value = kv[1];
+				value = java.net.URLDecoder.decode(value, "UTF-8");
 				searchTerms.addProperty(key, value);
 				
 			}

@@ -1,5 +1,6 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
 import axios from 'axios';
+import queryString from 'query-string';
 
 import { searchSingleMovieLoaded, searchSingleMovieError } from './actions';
 import { api } from '../../config';
@@ -11,15 +12,13 @@ const getSingleMovie = (searchTerms) => {
 
   let URL = `${api}/Search?`;
 
-  const terms = Object.keys(searchTerms);
+  console.log('assssssss');
+  console.log(queryString.stringify(searchTerms));
 
-  for (let i = 0; i < terms.length; i += 1) {
-    const term = terms[i];
-    URL += `${term}=${searchTerms[term]}`;
-    if (i !== terms.length - 1) {
-      URL += '&';
-    }
-  }
+  const data = queryString.stringify(searchTerms);
+
+  URL += data;
+
   console.log(URL);
 
   return axios.get(URL);

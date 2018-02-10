@@ -4,6 +4,8 @@ import { ConnectedRouter } from 'react-router-redux';
 
 import { history } from './store';
 
+import LikePredicate from './components/LikePredicate';
+
 import NavigationBar from './containers/NavigationBar';
 import LoginPage from './containers/LoginPage';
 import ShoppingCart from './containers/ShoppingCart';
@@ -21,6 +23,7 @@ const routes = (
     <div>
       <Switch>
         <Route exact path="/" component={LoginPage} />
+        <Route exact path="/reports/LikePredicate" component={LikePredicate} />
         <div>
           <NavigationBar />
           <Route exact path="/Home" component={HomePage} />

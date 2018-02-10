@@ -48,9 +48,14 @@ public class SearchSingleStar extends HttpServlet {
 		
 		String queryString = request.getQueryString();
 		
-		String[] starStringSplit = queryString.split("=")[1].split("\\+");
+		String star = queryString.split("=")[1];
 		
-		String star = String.join(" ", starStringSplit);
+		star = java.net.URLDecoder.decode(star, "UTF-8");
+		
+		String[] starStringSplit = star.split("\\+");
+		star = String.join(" ", starStringSplit);
+		System.out.println(star);
+		
 		
 		try {
             //Class.forName("org.gjt.mm.mysql.Driver");
