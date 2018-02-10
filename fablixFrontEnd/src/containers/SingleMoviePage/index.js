@@ -56,19 +56,25 @@ class SingleMovie extends Component {
   render() {
     const movie = this.props.singleMovieData.data[0];
 
+    let movieStars = null;
+    let movieGenres = null;
 
-    const movieStars = movie.stars.split(',').map((star, i) => (
-      <div key={i} onClick={this.handleStarClick} className="movie-star movie-star-alternate">
-        {star}
-      </div>
-    ));
+    if (movie.stars) {
+      movieStars = movie.stars.split(',').map((star, i) => (
+        <div key={i} onClick={this.handleStarClick} className="movie-star movie-star-alternate">
+          {star}
+        </div>
+      ));
+    }
 
-    const movieGenres = movie.genres.split(',').map((genre, i) => (
-      <div key={i} onClick={this.handleGenreClick} className="movie-genre movie-genre-alternate">
-        {genre}
-      </div>
-    ));
 
+    if (movie.genres) {
+      movieGenres = movie.genres.split(',').map((genre, i) => (
+        <div key={i} onClick={this.handleGenreClick} className="movie-genre movie-genre-alternate">
+          {genre}
+        </div>
+      ));
+    }
     return (
       <div className="single-movie-container">
         <div key={movie.id} className="movie-container alternate single-movie">
