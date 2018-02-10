@@ -27,14 +27,11 @@ class Checkout extends Component {
     };
   }
 
-  onComponentWillMount() {
+  componentWillMount() {
     const userString = getCookie("user");
 
-    if (userString === '') {
-      console.log('user not logged in');
-    }
-    else {
-      console.log('user is logged in');
+    if (this.getCartCount() <= 0) {
+      this.props.history.push('/Home');
     }
   }
 

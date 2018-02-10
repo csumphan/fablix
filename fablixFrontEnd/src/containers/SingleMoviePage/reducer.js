@@ -5,7 +5,7 @@ import {
 } from './constants';
 
 const initialState = {
-  movieData: { data: [{}] },
+  movieData: { data: [{ star: [], genre: [] }] },
   searchSingleMovieLoading: null,
   searchSingleMovieLoaded: null,
   searchSingleMovieError: null,

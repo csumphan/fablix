@@ -55,9 +55,8 @@ class SingleMovie extends Component {
 
   render() {
     const movie = this.props.singleMovieData.data[0];
-    if (!movie) {
-      return;
-    }
+
+
     const movieStars = movie.stars.split(',').map((star, i) => (
       <div key={i} onClick={this.handleStarClick} className="movie-star movie-star-alternate">
         {star}
