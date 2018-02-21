@@ -30,7 +30,7 @@
   height: 100%;
   border-top-left-radius: 0.6em;
   border-bottom-left-radius: 0.6em;
-  padding: 25px;
+  padding: 50px 30px;
 }
 
 #app-title {
@@ -85,6 +85,7 @@
   width: 70%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .signin-header {
@@ -116,4 +117,10 @@
   color: red;
   margin: 5px 0;
   text-align: center;
+}
+
+#g-recaptcha{
+  width: 90%;
+  align-self: center;
+  margin: 15px 0;
 }
