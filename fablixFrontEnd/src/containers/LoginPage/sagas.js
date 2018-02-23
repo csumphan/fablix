@@ -15,6 +15,7 @@ const postLogin = (credential) => {
   const data = queryString.stringify({
     email: credential.email,
     password: credential.password,
+    recaptcha: credential.recaptcha,
   });
   console.log('data', data);
 

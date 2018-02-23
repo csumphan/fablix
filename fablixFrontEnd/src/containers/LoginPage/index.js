@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import FontAwesome from 'react-fontawesome';
+import Recaptcha from 'react-recaptcha'
 
 import { loginUser, clearUserReducer } from './actions';
 import { selectUserData, selectUserLoginError } from './selectors';
@@ -17,6 +18,7 @@ class LoginPage extends Component {
     this.state = {
       email: '',
       password: '',
+      recaptcha: '',
     };
 
     console.log('constructing');
@@ -30,6 +32,10 @@ class LoginPage extends Component {
 
   handleTextChange = (field) => (e) => {
     this.setState({ [field]: e.target.value });
+  };
+
+  onLoadCallback = () => {
+    console.log('Done!!!!');
   };
 
   componentWillReceiveProps(nextProps) {
@@ -48,11 +54,17 @@ class LoginPage extends Component {
     const cred = {
       email: this.state.email,
       password: this.state.password,
+      recaptcha: this.state.recaptcha,
     };
 
     this.props.actions.loginUser(cred);
   };
 
+  verifyCallback = (res) => {
+    console.log('res:', res);
+
+    this.setState({recaptcha: res})
+  }
   render() {
     return (
       <div id="container-root">
@@ -104,8 +116,16 @@ class LoginPage extends Component {
                 type="password"
                 required
               />
+              <Recaptcha
+                sitekey="6Le8mUcUAAAAAOur4zwN8SNs8_hRwAlNiV3dUZ3n"
+                size='normal'
+                verifyCallback={this.verifyCallback}
+                onloadCallback={this.onLoadCallback}
+                render="explicit"
+              />
               <p className="error-msg">{this.props.error}</p>
               <input className="button" type="submit" value="Sign In" />
+
             </form>
           </div>
         </div>
