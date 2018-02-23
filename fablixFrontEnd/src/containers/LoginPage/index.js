@@ -24,6 +24,10 @@ class LoginPage extends Component {
     this.props.actions.clearUserReducer();
   }
 
+  handleLoginRedirect = (e) => {
+    this.props.history.push('/EmployeeLogin');
+  };
+
   handleTextChange = (field) => (e) => {
     this.setState({ [field]: e.target.value });
   };
@@ -52,6 +56,9 @@ class LoginPage extends Component {
   render() {
     return (
       <div id="container-root">
+        <div onClick={this.handleLoginRedirect} className="button login-redirect">
+          Employee Login
+        </div>
         <div id="confirmation-container">
           <div id="intro-container">
             <h1 id="app-title">Fablix</h1>
@@ -81,7 +88,7 @@ class LoginPage extends Component {
             </div>
           </div>
           <div id="login-container">
-            <h2 className="signin-header">Sign In</h2>
+            <h2 className="signin-header">Customer Sign In</h2>
             <form className="form-container" onSubmit={this.handleLogin}>
               <LabelInput
                 name="user"

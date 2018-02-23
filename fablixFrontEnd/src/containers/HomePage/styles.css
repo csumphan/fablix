@@ -10,16 +10,16 @@
   width: 30%;
   display: flex;
   background-color: white;
-  padding: 60px 200px;
+  padding: 40px 150px;
   border-radius: 25px;
-  margin: 200px;
+  margin: 170px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
 .redirects-title {
-  font-size: 50px;
+  font-size: 30px;
   font-weight: lighter;
   letter-spacing: 5px;
 }
@@ -32,8 +32,8 @@
   font-weight: lighter;
   margin: 50px;
   text-decoration: none;
-  padding: 30px;
-  font-size: 50px;
+  padding: 25px;
+  font-size: 30px;
   border: 1px solid black;
   border-radius: 15px;
   color: black;
