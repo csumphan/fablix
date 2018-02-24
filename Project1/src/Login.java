@@ -63,7 +63,6 @@ public class Login extends HttpServlet {
         JsonObject o = parser.parse(jsonLine).getAsJsonObject();
         
         System.out.println(o);
-        System.out.println("fuck");
         System.out.println(o.get("movieId"));
         response.setContentType("application/json"); // Response mime type
         boolean valid = VerifyUtils.verify(gRecaptchaResponse);

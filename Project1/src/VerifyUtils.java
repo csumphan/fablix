@@ -16,7 +16,7 @@ public class VerifyUtils {
         if (gRecaptchaResponse == null || gRecaptchaResponse.length() == 0) {
             return false;
         }
- 
+  
         try {
             URL verifyUrl = new URL(SITE_VERIFY_URL);
  
