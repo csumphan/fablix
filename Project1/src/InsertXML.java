@@ -23,7 +23,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 public class InsertXML {
-	public static void main(String args[]) {
+	public static void main(String args[]) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 		String loginUser = "root";
         String loginPasswd = "cs122bfablix";
         String loginUrl = "jdbc:mysql://localhost:3306/moviedb";
@@ -37,7 +37,7 @@ public class InsertXML {
         
         try {
 //            Class.forName("org.gjt.mm.mysql.Driver");
-//        		Class.forName("com.mysql.jdbc.Driver").newInstance();
+        		Class.forName("com.mysql.jdbc.Driver").newInstance();
 
             Connection dbcon = DriverManager.getConnection(loginUrl, loginUser, loginPasswd);
             
