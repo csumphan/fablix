@@ -231,11 +231,6 @@ public class SAXCastParser extends DefaultHandler{
 		
 	}
 	
-	public static void main(String[] args){
-		SAXCastParser spe = new SAXCastParser();
-		Map movies = spe.getData();
-		
-	}
 	
 }
 
