@@ -17,12 +17,16 @@ import SingleStarPage from './containers/SingleStarPage';
 import Checkout from './containers/Checkout';
 import Confirmation from './containers/Confirmation';
 import HomePage from './containers/HomePage';
+import EmployeeLoginPage from './containers/EmployeeLoginPage';
+import EmployeeDashboardPage from './containers/EmployeeDashboardPage';
 
 const routes = (
   <ConnectedRouter history={history}>
     <div>
       <Switch>
         <Route exact path="/Project1" component={LoginPage} />
+        <Route exact path="/EmployeeLogin" component={EmployeeLoginPage} />
+        <Route exact path="/EmployeeDashboard" component={EmployeeDashboardPage} />
         <Route exact path="/reports/LikePredicate" component={LikePredicate} />
         <div>
           <NavigationBar />

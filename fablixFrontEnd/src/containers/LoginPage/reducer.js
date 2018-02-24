@@ -4,7 +4,6 @@ import {
   LOGIN_USER,
   LOGIN_USER_LOADED,
   LOGIN_USER_ERROR,
-  CLEAR_USER_REDUCER,
   CLEAR_USER_REDUCER_LOADED,
 } from './constants';
 

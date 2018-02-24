@@ -6,6 +6,8 @@ import moviesSaga from './containers/MovieListPage/sagas';
 import singleMovieSaga from './containers/SingleMoviePage/sagas';
 import singleStarSaga from './containers/SingleStarPage/sagas';
 import shoppingCartSaga from './containers/ShoppingCart/sagas';
+import employeeSaga from './containers/EmployeeLoginPage/sagas';
+import employeeDashboardSaga from './containers/EmployeeDashboardPage/sagas';
 
 const sagas = [
   appSagas,
@@ -15,6 +17,8 @@ const sagas = [
   singleMovieSaga,
   singleStarSaga,
   shoppingCartSaga,
+  employeeSaga,
+  employeeDashboardSaga,
 ];
 
 function* globalSagas() {

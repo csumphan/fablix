@@ -24,22 +24,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 150px;
+  margin-top: 100px;
 }
 
 .search-by-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
 }
 
 .search-by {
   border: 1px solid black;
   border-radius: 10px;
   padding: 10px;
-  margin: 10px;
-  font-size: 25px;
+  margin: 5px;
+  font-size: 15px;
 
   transition-property: background-color;
   transition-duration: 0.1s;

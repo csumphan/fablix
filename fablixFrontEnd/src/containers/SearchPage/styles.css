@@ -16,7 +16,7 @@ label {
 .search-form-container > input {
   padding: 10px;
   border-radius: 10px;
-  font-size: 25px;
+  font-size: 15px;
   border: none;
   border: 1px solid grey;
 }
@@ -44,9 +44,9 @@ input:focus {
   display: flex;
   flex-direction: column;
   background-color: white;
-  padding: 30px 60px 0px 60px;
+  padding: 0px 60px 0px 60px;
   border-radius: 25px;
-  margin: 200px;
+  margin: 125px;
 }
 
 .search-form-container > label {
@@ -67,7 +67,7 @@ input:focus {
   letter-spacing: 3px;
   line-height: 50px;
   height: 50px;
-  margin: 50px 0px;
+  margin: 15px 0px 30px 0px;
   align-self: flex-end;
 }
 

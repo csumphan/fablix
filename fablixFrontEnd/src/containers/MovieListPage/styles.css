@@ -8,14 +8,13 @@ body {
 }
 
 .page-title {
-  font-size: 30px;
+  font-size: 20px;
   text-align: center;
   letter-spacing: 25px;
-  padding: 10px;
 }
 
 .movies-list-container {
-  padding-top: 100px;
+  padding-top: 75px;
 }
 
 .movies-container {
@@ -141,6 +140,11 @@ body {
   cursor: pointer;
 }
 
+.add-to-cart-button:hover {
+  color: black;
+  cursor: pointer;
+}
+
 .icon {
   margin: 0px 5px;
 }
@@ -148,7 +152,7 @@ body {
 .action-bar-container {
   display: flex;
   justify-content: center;
-  font-size: 28px;
+  font-size: 15px;
   text-align: center;
 }
 
@@ -162,7 +166,7 @@ body {
 }
 
 .prev-next-container {
-  font-size: 30px;
+  font-size: 15px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -175,7 +179,7 @@ body {
 
 .pagination-bar-container {
   display: flex;
-  font-size: 15px;
+  font-size: 10px;
   justify-content: center;
 }
 
@@ -186,8 +190,8 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   color: white;
-  font-size: 20px;
-  padding: 10px;
+  font-size: 15px;
+  padding: 5px;
 }
 
 .page-number {

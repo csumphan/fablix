@@ -61,3 +61,10 @@ CREATE TABLE IF NOT EXISTS ratings (
   numVotes INTEGER NOT NULL,
   FOREIGN KEY(movieId) REFERENCES movies(id)
 );
+
+CREATE TABLE IF NOT EXISTS employees (
+  email VARCHAR(50),
+  password VARCHAR(20) NOT NULL DEFAULT '',
+  fullname VARCHAR(100),
+  PRIMARY KEY(email)
+);
