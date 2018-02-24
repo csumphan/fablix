@@ -18,10 +18,8 @@ class EmployeeDashboardPage extends Component {
       title: '',
       director: '',
       year: '',
-      starID: '',
       star: '',
       genre: '',
-      starStarID: '',
       starFullName: '',
       starBirthYear: '',
       addStarEmptyFields: '',
@@ -34,14 +32,13 @@ class EmployeeDashboardPage extends Component {
   handleAddStarClick = (e) => {
     // Check if birth year is an integer and no empty fields
 
-    const { starStarID, starFullName, starBirthYear } = this.state;
+    const { starFullName, starBirthYear } = this.state;
 
-    const noEmptyFields = starStarID && starFullName && starBirthYear;
+    const noEmptyFields = starFullName && starBirthYear;
 
     if (noEmptyFields) {
       if (this.state.starBirthYear == parseInt(this.state.starBirthYear, 10)) {
         const starData = {
-          starId: this.state.starStarID,
           fullName: this.state.starFullName,
           birthYear: this.state.starBirthYear,
         };
@@ -50,7 +47,6 @@ class EmployeeDashboardPage extends Component {
 
         this.setState({
           addStarError: '',
-          starStarID: '',
           starFullName: '',
           starBirthYear: '',
         });
@@ -65,9 +61,9 @@ class EmployeeDashboardPage extends Component {
   handleAddMovieClick = (e) => {
     // Check if year is an integer and no empty fields
 
-    const { movieID, title, director, year, starID, star, genre } = this.state;
+    const { movieID, title, director, year, star, genre } = this.state;
 
-    const noEmptyFields = movieID && title && director && year && starID && star && genre;
+    const noEmptyFields = movieID && title && director && year && star && genre;
 
     if (noEmptyFields) {
       if (this.state.year == parseInt(this.state.year, 10)) {
@@ -76,7 +72,6 @@ class EmployeeDashboardPage extends Component {
           title: this.state.title,
           director: this.state.director,
           year: this.state.year,
-          starId: this.state.starID,
           star: this.state.star,
           genre: this.state.genre,
         };
@@ -89,7 +84,6 @@ class EmployeeDashboardPage extends Component {
           title: '',
           director: '',
           year: '',
-          starID: '',
           star: '',
           genre: '',
         });
@@ -143,13 +137,6 @@ class EmployeeDashboardPage extends Component {
               />
               <LabelInput
                 name="angle-right"
-                placeholder="nm999999"
-                onChange={(e) => this.setState({ starID: e.target.value })}
-                label="Star ID"
-                value={this.state.starID}
-              />
-              <LabelInput
-                name="angle-right"
                 placeholder="Megan Fox"
                 onChange={(e) => this.setState({ star: e.target.value })}
                 label="Star"
@@ -173,13 +160,6 @@ class EmployeeDashboardPage extends Component {
           <div className="three-columns-container">
             <h1 className="title">Add Star</h1>
             <div id="add-star-form">
-              <LabelInput
-                name="angle-right"
-                placeholder="nm999999"
-                onChange={(e) => this.setState({ starStarID: e.target.value })}
-                label="Star ID"
-                value={this.state.starStarID}
-              />
               <LabelInput
                 name="angle-right"
                 placeholder="Megan Fox"

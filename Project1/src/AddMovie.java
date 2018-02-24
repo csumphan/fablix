@@ -53,7 +53,6 @@ public class AddMovie extends HttpServlet {
         String title = request.getParameter("title");
         String director = request.getParameter("director");
         String year = request.getParameter("year");
-        String starId = request.getParameter("starId");
         String star = request.getParameter("star");
         String genre = request.getParameter("genre");
         
@@ -71,7 +70,7 @@ public class AddMovie extends HttpServlet {
             Statement addStatement = dbcon.createStatement();
             
             // Check if star exists
-            String addMovieQuery = "CALL add_movie('" + movieId + "', '" + title + "', " + year + ", '" + director + "', '" + starId + "', '" + star + "', '" + genre + "')";
+            String addMovieQuery = "CALL add_movie('" + movieId + "', '" + title + "', " + year + ", '" + director + "', '" + star + "', '" + genre + "')";
             
             ResultSet addMovie_rs = addStatement.executeQuery(addMovieQuery);
             

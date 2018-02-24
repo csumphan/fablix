@@ -49,7 +49,6 @@ public class AddStar extends HttpServlet {
         String loginPasswd = "cs122bfablix";
         String loginUrl = "jdbc:mysql://localhost:3306/moviedb";
         
-        String starId = request.getParameter("starId");
         String fullName = request.getParameter("fullName");
         String birthYear = request.getParameter("birthYear");
         
@@ -67,14 +66,14 @@ public class AddStar extends HttpServlet {
             Statement addStatement = dbcon.createStatement();
             
             // Check if star exists
-            String addStarQuery = "CALL add_star('" + starId + "', '" + fullName + "', " + birthYear + ")";
+            String addStarQuery = "CALL add_star('" + fullName + "', " + birthYear + ")";
             
             ResultSet addStar_rs = addStatement.executeQuery(addStarQuery);
             
-            String verifyQuery = "SELECT * FROM stars WHERE id = '" + starId + "' AND (name = '" + fullName + "' AND birthYear = " + birthYear + ")";
+            String verifyQuery = "SELECT * FROM stars WHERE name = '" + fullName + "' AND birthYear = " + birthYear;
             
             Statement verifyStatement = dbcon.createStatement();
-            
+    
             ResultSet verify_rs = verifyStatement.executeQuery(verifyQuery);
             
             if (verify_rs.next()) {

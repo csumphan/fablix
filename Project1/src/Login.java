@@ -1,5 +1,3 @@
-
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,25 +5,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import java.io.PrintWriter;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-
 /**
  * Servlet implementation class Login
  */
 @WebServlet("/Login")
 public class Login extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -35,35 +29,32 @@ public class Login extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
     
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at this URL, which is /Login, where login authentication works: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String loginUser = "root";
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        response.getWriter().append("Served at this URL, which is /Login, where login authentication works: ").append(request.getContextPath());
+    }
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        String loginUser = "root";
         String loginPasswd = "cs122bfablix";
         String loginUrl = "jdbc:mysql://localhost:3306/moviedb";
         
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String gRecaptchaResponse = request.getParameter("recaptcha");
-    		System.out.println("gRecaptchaResponse=");
-    		System.out.println(gRecaptchaResponse);
+            System.out.println("gRecaptchaResponse=");
+            System.out.println(gRecaptchaResponse);
         String jsonLine = "{\"movieId\":\"tt0100275\",\"count\":1}";
         JsonParser parser = new JsonParser();
         JsonObject o = parser.parse(jsonLine).getAsJsonObject();
         
         System.out.println(o);
-        System.out.println("fuck");
         System.out.println(o.get("movieId"));
         response.setContentType("application/json"); // Response mime type
         boolean valid = VerifyUtils.verify(gRecaptchaResponse);
@@ -72,10 +63,9 @@ public class Login extends HttpServlet {
         
         PrintWriter out = response.getWriter();
         if (valid) {
-        		try {
+                try {
                 //Class.forName("org.gjt.mm.mysql.Driver");
-            		Class.forName("com.mysql.jdbc.Driver").newInstance();
-
+                    Class.forName("com.mysql.jdbc.Driver").newInstance();
                 Connection dbcon = DriverManager.getConnection(loginUrl, loginUser, loginPasswd);
                 
                 // Declare our statement
@@ -87,36 +77,36 @@ public class Login extends HttpServlet {
                 ResultSet rs = statement.executeQuery(existsQuery);
                 
                 if (rs.next()) {
-                		JsonObject userInfo = new JsonObject();
-                		
-                		String m_id = rs.getString("id");
-                		String m_firstName = rs.getString("firstName");
-                		String m_lastName = rs.getString("lastName");
-                		String m_ccId = rs.getString("ccId");
-                		String m_address = rs.getString("address");
-                		String m_email = rs.getString("email");
-                		String m_password = rs.getString("password");
-                		
-                		userInfo.addProperty("id", m_id);
-                		userInfo.addProperty("firstName", m_firstName);
-                		userInfo.addProperty("lastName", m_lastName);
-                		userInfo.addProperty("ccId", m_ccId);
-                		userInfo.addProperty("address", m_address);
-                		userInfo.addProperty("email", m_email);
-                		userInfo.addProperty("password", m_password);
-                		
-                		request.getSession().setAttribute("id", m_id);
-                		request.getSession().setAttribute("firstName", m_firstName);
-                		request.getSession().setAttribute("lastName", m_lastName);
-                		
-                		out.write(userInfo.toString());
+                        JsonObject userInfo = new JsonObject();
+                        
+                        String m_id = rs.getString("id");
+                        String m_firstName = rs.getString("firstName");
+                        String m_lastName = rs.getString("lastName");
+                        String m_ccId = rs.getString("ccId");
+                        String m_address = rs.getString("address");
+                        String m_email = rs.getString("email");
+                        String m_password = rs.getString("password");
+                        
+                        userInfo.addProperty("id", m_id);
+                        userInfo.addProperty("firstName", m_firstName);
+                        userInfo.addProperty("lastName", m_lastName);
+                        userInfo.addProperty("ccId", m_ccId);
+                        userInfo.addProperty("address", m_address);
+                        userInfo.addProperty("email", m_email);
+                        userInfo.addProperty("password", m_password);
+                        
+                        request.getSession().setAttribute("id", m_id);
+                        request.getSession().setAttribute("firstName", m_firstName);
+                        request.getSession().setAttribute("lastName", m_lastName);
+                        
+                        out.write(userInfo.toString());
                 }
                 
                 else {
-                		JsonObject errorInfo = new JsonObject();
-                		errorInfo.addProperty("error", "Incorrect email/password");
-                		
-                		out.write(errorInfo.toString());
+                        JsonObject errorInfo = new JsonObject();
+                        errorInfo.addProperty("error", "Incorrect email/password");
+                        
+                        out.write(errorInfo.toString());
                 }
                 
                 rs.close();
@@ -135,14 +125,13 @@ public class Login extends HttpServlet {
             }
         }
         else {
-        	JsonObject errorInfo = new JsonObject();
-    		errorInfo.addProperty("error", "Invalid Recaptcha: Are you human?");
-    		
-    		out.write(errorInfo.toString());
+            JsonObject errorInfo = new JsonObject();
+            errorInfo.addProperty("error", "Invalid Recaptcha: Are you human?");
+            
+            out.write(errorInfo.toString());
         }
         
         out.close();
-		doGet(request, response);
-	}
-
+        doGet(request, response);
+    }
 }
