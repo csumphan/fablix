@@ -12,13 +12,10 @@ const getSingleStar = (searchTerms) => {
 
   let URL = `${api}/SearchSingleStar?`;
 
-  console.log('assssssss');
-  console.log(queryString.stringify(searchTerms));
 
   const data = queryString.stringify(searchTerms);
 
   URL += data;
-  console.log(URL);
 
   return axios.get(URL);
 };
@@ -35,13 +32,10 @@ const getSingleStarMovies = (searchTerms) => {
 };
 
 function* searchSingleStar(action) {
-  console.log('action', action);
   const result = yield call(getSingleStar, action.payload);
   const movies = yield call(getSingleStarMovies, action.payload);
   result.movies = movies.data;
-  console.log('result', result);
   if (result.data.error) {
-    console.log('result.data.error', result.data.error);
     yield put(searchSingleStarError(result.data.error));
   } else {
     yield put(searchSingleStarLoaded(result));

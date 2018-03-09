@@ -2,14 +2,19 @@ import {
   SEARCH_MOVIES,
   SEARCH_MOVIES_LOADED,
   SEARCH_MOVIES_ERROR,
+  FULL_TEXT_SEARCH_MOVIES,
+  FULL_TEXT_SEARCH_MOVIES_LOADED,
+  FULL_TEXT_SEARCH_MOVIES_ERROR,
   SORT_TITLE_ASCENDING,
   SORT_TITLE_DESCENDING,
   SORT_YEAR_ASCENDING,
   SORT_YEAR_DESCENDING,
+  EMPTY_MOVIE_DATA
 } from './constants';
 
 const initialState = {
   moviesData: null,
+  starsData: null,
   searchMoviesLoading: null,
   searchMoviesLoaded: null,
   searchMoviesError: null,
@@ -37,6 +42,42 @@ const appReducer = (state = initialState, action) => {
         searchMoviesLoading: false,
         searchMoviesLoaded: false,
         searchMoviesError: action.error,
+      };
+    case FULL_TEXT_SEARCH_MOVIES:
+      return {
+        ...state,
+        searchMoviesLoading: true,
+        searchMoviesError: null,
+      };
+    case FULL_TEXT_SEARCH_MOVIES_LOADED:
+      console.log(action)
+      if (action.data.type === 'movie') {
+        return {
+          ...state,
+          moviesData: action.data.result,
+          searchMoviesLoading: false,
+          searchMoviesLoaded: true,
+          searchMoviesError: null,
+        };
+      }
+      return {
+        ...state,
+        starsData: action.data.result,
+        searchMoviesLoading: false,
+        searchMoviesLoaded: true,
+        searchMoviesError: null,
+      };
+    case FULL_TEXT_SEARCH_MOVIES_ERROR:
+      return {
+        ...state,
+        searchMoviesLoading: false,
+        searchMoviesLoaded: false,
+        searchMoviesError: action.error,
+      };
+    case EMPTY_MOVIE_DATA:
+      return {
+        ...state,
+        moviesData: null
       };
     case SORT_TITLE_ASCENDING: {
       const allMovies = { ...state.moviesData };
