@@ -1,0 +1,15 @@
+127.0.0.1 - - [08/Mar/2018:00:10:19 -0800] "POST /Project1/LoginAndroid HTTP/1.1" 200 109
+127.0.0.1 - - [08/Mar/2018:00:10:31 -0800] "GET /Project1/Search?year=2010 HTTP/1.1" 200 6477
+127.0.0.1 - - [08/Mar/2018:18:17:29 -0800] "POST /Project1/LoginAndroid HTTP/1.1" 200 36
+127.0.0.1 - - [08/Mar/2018:18:17:34 -0800] "POST /Project1/LoginAndroid HTTP/1.1" 200 109
+127.0.0.1 - - [08/Mar/2018:18:17:43 -0800] "GET /Project1/Search?year=2010 HTTP/1.1" 200 6477
+127.0.0.1 - - [08/Mar/2018:23:10:50 -0800] "POST /Project1/LoginAndroid HTTP/1.1" 200 109
+127.0.0.1 - - [08/Mar/2018:23:10:54 -0800] "GET /Project1/Search?year=2010 HTTP/1.1" 200 6477
+127.0.0.1 - - [08/Mar/2018:23:12:25 -0800] "POST /Project1/LoginAndroid HTTP/1.1" 200 109
+127.0.0.1 - - [08/Mar/2018:23:12:25 -0800] "POST /Project1/LoginAndroid HTTP/1.1" 200 109
+127.0.0.1 - - [08/Mar/2018:23:12:29 -0800] "GET /Project1/Search?year=2010 HTTP/1.1" 200 6477
+127.0.0.1 - - [08/Mar/2018:23:29:09 -0800] "POST /Project1/LoginAndroid HTTP/1.1" 200 109
+127.0.0.1 - - [08/Mar/2018:23:29:09 -0800] "POST /Project1/LoginAndroid HTTP/1.1" 200 109
+127.0.0.1 - - [08/Mar/2018:23:29:15 -0800] "GET /Project1/Search?year=2010 HTTP/1.1" 200 6477
+127.0.0.1 - - [08/Mar/2018:23:30:16 -0800] "POST /Project1/LoginAndroid HTTP/1.1" 200 109
+127.0.0.1 - - [08/Mar/2018:23:30:20 -0800] "GET /Project1/Search?year=2009 HTTP/1.1" 200 19261
