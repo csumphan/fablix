@@ -27,7 +27,7 @@ const middlewares = [
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 /* eslint-enable */
 
-const store = createStore(persistedReducer, composeEnhancers(applyMiddleware(...middlewares)));
+const store = createStore(persistedReducer, undefined, composeEnhancers(applyMiddleware(...middlewares)));
 
 const persistor = persistStore(store);
 
