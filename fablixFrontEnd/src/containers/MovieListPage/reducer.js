@@ -13,13 +13,14 @@ import {
 } from './constants';
 
 const initialState = {
-  storedQueryMovie: {},
-  storedQueryStars: {},
+  storedQueryMovie: null,
+  storedQueryStars: null,
   moviesData: null,
   starsData: null,
   searchMoviesLoading: null,
   searchMoviesLoaded: null,
   searchMoviesError: null,
+  blah: {},
 };
 
 const appReducer = (state = initialState, action) => {
