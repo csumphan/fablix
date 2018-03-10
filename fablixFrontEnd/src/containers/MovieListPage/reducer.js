@@ -110,7 +110,14 @@ const appReducer = (state = initialState, action) => {
       return { ...state, moviesData: allMovies };
     }
     case 'persist/REHYDRATE':
-      return state;
+      {
+        if (!action.err && action.key === 'root') {
+          console.log('old action', action)
+          action.payload.containers.moviesReducer = state;
+          console.log('new action', action)
+          return state;
+        }
+      }
     default:
       return state;
   }
