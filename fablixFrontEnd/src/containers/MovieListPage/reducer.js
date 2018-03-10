@@ -109,6 +109,8 @@ const appReducer = (state = initialState, action) => {
       allMovies.data.sort((a, b) => parseInt(b.year, 10) - parseInt(a.year, 10));
       return { ...state, moviesData: allMovies };
     }
+    case 'persist/REHYDRATE':
+      return state;
     default:
       return state;
   }
