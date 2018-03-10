@@ -219,6 +219,7 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state)
   return {
     moviesData: selectMoviesData(state),
     starsData: selectStarsData(state),
