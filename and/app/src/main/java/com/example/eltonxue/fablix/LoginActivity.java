@@ -100,6 +100,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         });
 
         Button mLoginButton = (Button) findViewById(R.id.login_button);
+        mLoginButton.setText("Login");
         mLoginButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -197,7 +198,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         RequestQueue queue = Volley.newRequestQueue(this);
 
         final Context context = this;
-        String url = "http://10.0.2.2:8080/Project1/LoginAndroid";
+        String url = "http://54.176.223.140:8080/Project1/LoginAndroid";
 
         StringRequest postRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>()

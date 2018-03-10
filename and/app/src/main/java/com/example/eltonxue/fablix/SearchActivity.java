@@ -23,6 +23,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -66,10 +68,22 @@ public class SearchActivity extends AppCompatActivity {
         else {
             // Make GET call and switch activities
 
+
+            try {
             RequestQueue queue = Volley.newRequestQueue(this);
 
+            String searchInput = URLEncoder.encode(input, "UTF-8");
+
+            Log.d("UTF-8 Input: ", searchInput);
+
+            String searchQuery = searchInput.replace("+", "%2B");
+
+            Log.d("UTF-8 Query: ", searchQuery);
+
             final Context context = this;
-            String url = "http://10.0.2.2:8080/Project1/Search?year=2010"; // Searches for all Movies directed in 2010
+            String url = "http://54.176.223.140:8080/Project1/FullTextSearch?type=movie&query=" + searchQuery;
+
+            Log.d("UTF-8 URL: ", url);
 
             StringRequest getRequest = new StringRequest(Request.Method.GET, url,
                     new Response.Listener<String>()
@@ -108,6 +122,10 @@ public class SearchActivity extends AppCompatActivity {
             getRequest.setShouldCache(false);
             queue.add(getRequest);
 
+            }
+            catch (UnsupportedEncodingException exception) {
+                Log.d("Error: ", exception.toString());
+            }
 
 
         }

@@ -118,7 +118,7 @@ public class MovieListActivity extends AppCompatActivity {
      */
     private void CheckEnable()
     {
-        if(increment+1 == pageCount)
+        if(increment == pageCount + 1)
         {
             btn_next.setEnabled(false);
         }
