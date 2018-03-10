@@ -9,7 +9,7 @@ import {
   SORT_TITLE_DESCENDING,
   SORT_YEAR_ASCENDING,
   SORT_YEAR_DESCENDING,
-  EMPTY_MOVIE_DATA
+  EMPTY_MOVIE_DATA,
 } from './constants';
 
 const initialState = {
@@ -24,6 +24,7 @@ const initialState = {
 };
 
 const appReducer = (state = initialState, action) => {
+  console.log('movie reducer change:', state);
   switch (action.type) {
     case SEARCH_MOVIES:
       return {
@@ -83,7 +84,7 @@ const appReducer = (state = initialState, action) => {
         ...state,
         moviesData: null,
         storedQueryMovie: {},
-        storedQueryStars: {}
+        storedQueryStars: {},
       };
     case SORT_TITLE_ASCENDING: {
       const allMovies = { ...state.moviesData };
@@ -108,7 +109,6 @@ const appReducer = (state = initialState, action) => {
       allMovies.data.sort((a, b) => parseInt(b.year, 10) - parseInt(a.year, 10));
       return { ...state, moviesData: allMovies };
     }
-
     default:
       return state;
   }
