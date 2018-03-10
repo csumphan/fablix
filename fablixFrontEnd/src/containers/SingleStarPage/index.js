@@ -20,7 +20,6 @@ class SingleStar extends Component {
   }
 
   handleMovieClick = (movie) => {
-    console.log(movie);
     let searchTerms = {};
     searchTerms.title = movie.title.split(' ').join('+');
     searchTerms.director = movie.director.split(' ').join('+');
@@ -58,8 +57,7 @@ class SingleStar extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('selectSingleStarData', selectSingleStarData(state));
-  console.log('selectSearchSingleStarError', selectSearchSingleStarError(state));
+
   return {
     singleStarData: selectSingleStarData(state),
     error: selectSearchSingleStarError(state),
@@ -67,7 +65,6 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  console.log('dispatch', dispatch);
   return {
     actions: bindActionCreators(
       {

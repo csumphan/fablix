@@ -13,6 +13,8 @@ import {
 } from './constants';
 
 const initialState = {
+  storedQueryMovie: {},
+  storedQueryStars: {},
   moviesData: null,
   starsData: null,
   searchMoviesLoading: null,
@@ -50,10 +52,10 @@ const appReducer = (state = initialState, action) => {
         searchMoviesError: null,
       };
     case FULL_TEXT_SEARCH_MOVIES_LOADED:
-      console.log(action)
       if (action.data.type === 'movie') {
         return {
           ...state,
+          storedQueryMovie: { ...state.storedQueryMovie, [action.data.query]: action.data.result },
           moviesData: action.data.result,
           searchMoviesLoading: false,
           searchMoviesLoaded: true,
@@ -62,6 +64,7 @@ const appReducer = (state = initialState, action) => {
       }
       return {
         ...state,
+        storedQueryStars: { ...state.storedQueryStars, [action.data.query]: action.data.result },
         starsData: action.data.result,
         searchMoviesLoading: false,
         searchMoviesLoaded: true,
@@ -77,7 +80,9 @@ const appReducer = (state = initialState, action) => {
     case EMPTY_MOVIE_DATA:
       return {
         ...state,
-        moviesData: null
+        moviesData: null,
+        storedQueryMovie: {},
+        storedQueryStars: {}
       };
     case SORT_TITLE_ASCENDING: {
       const allMovies = { ...state.moviesData };

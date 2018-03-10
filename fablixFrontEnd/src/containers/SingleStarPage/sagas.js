@@ -26,7 +26,6 @@ const getSingleStarMovies = (searchTerms) => {
   const data = queryString.stringify(searchTerms);
 
   URL += data;
-  console.log(URL);
 
   return axios.get(URL);
 };

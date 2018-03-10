@@ -25,7 +25,6 @@ const getFullTextMovieList = (searchTerms) => {
   const data = queryString.stringify(searchTerms);
 
   URL += data;
-  console.log(URL);
 
   return axios.get(URL);
 };
@@ -47,6 +46,7 @@ function* searchFullTextMovies(action) {
   } else {
     yield put(searchFullTextMoviesLoaded({
       type: action.payload.type,
+      query: action.payload.rawValue.trim(),
       result,
     }));
   }

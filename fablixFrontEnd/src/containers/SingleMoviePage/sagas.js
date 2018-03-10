@@ -12,24 +12,16 @@ const getSingleMovie = (searchTerms) => {
 
   let URL = `${api}/Search?`;
 
-  console.log('assssssss');
-  console.log(queryString.stringify(searchTerms));
-
   const data = queryString.stringify(searchTerms);
 
   URL += data;
-
-  console.log(URL);
 
   return axios.get(URL);
 };
 
 function* searchSingleMovie(action) {
-  console.log('action', action);
   const result = yield call(getSingleMovie, action.payload);
-  console.log('result', result);
   if (result.data.error) {
-    console.log('result.data.error', result.data.error);
     yield put(searchSingleMovieError(result.data.error));
   } else {
     yield put(searchSingleMovieLoaded(result));

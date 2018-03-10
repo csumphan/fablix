@@ -82,5 +82,9 @@
 .autocomplete-header {
   font-size: 20px;
   font-weight: bold;
-  padding-bottom: 10px;
+  padding: 10px 0;
+}
+
+.autocom-item:hover {
+  cursor: pointer;
 }
