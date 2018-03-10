@@ -25,6 +25,7 @@ const initialState = {
 
 const appReducer = (state = initialState, action) => {
   console.log('movie reducer change:', state);
+  console.log('movie reducer', action)
   switch (action.type) {
     case SEARCH_MOVIES:
       return {
