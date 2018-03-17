@@ -149,7 +149,11 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-     <Context docBase="/Users/eltonxue/Documents/UCI/UCI Academics/2018 Winter Quarter/CS122B/cs122b-winter18-team-82/apache-tomcat-8.5.24/wtpwebapps/Project1" path="/Project1" reloadable="true" source="org.eclipse.jst.jee.server:Project1"/></Host>
+     <Context docBase="/Users/eltonxue/Documents/UCI/UCI Academics/2018 Winter Quarter/CS122B/cs122b-winter18-team-82/apache-tomcat-8.5.24/wtpwebapps/Project1" path="/Project1" reloadable="true" source="org.eclipse.jst.jee.server:Project1">
+
+	<Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" maxIdle="30" maxTotal="100" maxWaitMillis="10000" name="jdbc/TestDB" password="cs122bfablix" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/moviedb?autoReconnect=true&amp;useSSL=false&amp;cachePrepStmts=true" username="root"/>
+
+</Context></Host>
     </Engine>
   </Service>
 </Server>

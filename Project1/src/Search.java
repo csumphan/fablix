@@ -1,11 +1,15 @@
 
 
 import java.io.IOException;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -19,6 +23,8 @@ import java.util.List;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonArray;
+
+import java.sql.PreparedStatement;
 
 /**
  * Servlet implementation class Search
@@ -40,14 +46,14 @@ public class Search extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String loginUser = "root";
-        String loginPasswd = "cs122bfablix";
-        String loginUrl = "jdbc:mysql://localhost:3306/moviedb";
+//		String loginUser = "root";
+//        String loginPasswd = "cs122bfablix";
+//        String loginUrl = "jdbc:mysql://localhost:3306/moviedb";
         
 		response.setContentType("application/json"); // Response mime type
         
         PrintWriter out = response.getWriter();
-		
+        
 		JsonObject searchTerms = new JsonObject();
 		
 		String queryString = request.getQueryString();
@@ -79,10 +85,30 @@ public class Search extends HttpServlet {
 		JsonElement startWith = searchTerms.get("startWith");
 		
 		try {
-            //Class.forName("org.gjt.mm.mysql.Driver");
-        		Class.forName("com.mysql.jdbc.Driver").newInstance();
+        		//Class.forName("com.mysql.jdbc.Driver").newInstance();
+			
+			// the following few lines are for connection pooling
+            // Obtain our environment naming context
 
-            Connection dbcon = DriverManager.getConnection(loginUrl, loginUser, loginPasswd);
+            Context initCtx = new InitialContext();
+            if (initCtx == null)
+                out.println("initCtx is NULL");
+
+            Context envCtx = (Context) initCtx.lookup("java:comp/env");
+            if (envCtx == null)
+                out.println("envCtx is NULL");
+            
+            // Look up our data source
+            DataSource ds = (DataSource) envCtx.lookup("jdbc/TestDB");
+            
+            if (ds == null)
+                out.println("ds is null.");
+
+            Connection dbcon = ds.getConnection();
+            if (dbcon == null)
+                out.println("dbcon is null.");
+
+            // Connection dbcon = DriverManager.getConnection(loginUrl, loginUser, loginPasswd);
 
             
             // Check if email exists
@@ -205,6 +231,7 @@ public class Search extends HttpServlet {
             statement.close();
             dbcon.close();
         } catch (SQLException ex) {
+        		ex.printStackTrace();
             while (ex != null) {
                 System.out.println("SQL Exception:  " + ex.getMessage());
                 ex = ex.getNextException();

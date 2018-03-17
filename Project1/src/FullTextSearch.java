@@ -11,15 +11,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+
+import java.sql.PreparedStatement;
 
 /**
  * Servlet implementation class FullTextSearch
@@ -41,9 +46,9 @@ public class FullTextSearch extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String loginUser = "root";
-        String loginPasswd = "cs122bfablix";
-        String loginUrl = "jdbc:mysql://localhost:3306/moviedb";
+//		String loginUser = "root";
+//        String loginPasswd = "cs122bfablix";
+//        String loginUrl = "jdbc:mysql://localhost:3306/moviedb";
         
         response.setContentType("application/json"); // Response mime type
         
@@ -86,18 +91,42 @@ public class FullTextSearch extends HttpServlet {
 		System.out.println(matchString);
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
+//			Class.forName("com.mysql.jdbc.Driver").newInstance();
 
-            Connection dbcon = DriverManager.getConnection(loginUrl, loginUser, loginPasswd);
+//            Connection dbcon = DriverManager.getConnection(loginUrl, loginUser, loginPasswd);
+            
+			// the following few lines are for connection pooling
+            // Obtain our environment naming context
+
+            Context initCtx = new InitialContext();
+            if (initCtx == null)
+                out.println("initCtx is NULL");
+
+            Context envCtx = (Context) initCtx.lookup("java:comp/env");
+            if (envCtx == null)
+                out.println("envCtx is NULL");
+            
+            // Look up our data source
+            DataSource ds = (DataSource) envCtx.lookup("jdbc/TestDB");
+            
+            if (ds == null)
+                out.println("ds is null.");
+
+            Connection dbcon = ds.getConnection();
+            if (dbcon == null)
+                out.println("dbcon is null.");
             
             if (type.getAsString().equals("movie")) {
 	        		String searchQuery = "SELECT * FROM movies JOIN ratings ON movies.id = ratings.movieId";
-	        		searchQuery = "SELECT * FROM (" + searchQuery + ") AS alias WHERE MATCH(title) AGAINST ('" + matchString +"' IN BOOLEAN MODE)";
+	        		searchQuery = "SELECT * FROM (" + searchQuery + ") AS alias WHERE MATCH(title) AGAINST (? IN BOOLEAN MODE)";
 	        		
 	        		System.out.println(searchQuery);
 	        		
-	        		Statement statement = dbcon.createStatement();
-	            ResultSet rs = statement.executeQuery(searchQuery);
+	        		PreparedStatement search_pst = dbcon.prepareStatement(searchQuery);
+	        		
+	        		search_pst.setString(1, matchString);
+	        		
+	            ResultSet rs = search_pst.executeQuery();
 	            
 	            JsonArray moviesArray = new JsonArray();
 	            
@@ -111,14 +140,21 @@ public class FullTextSearch extends HttpServlet {
 	                String m_rating = rs.getString("rating");
 	                String m_votes = rs.getString("numVotes");
 	                
-	                String stars_query = "SELECT name FROM (SELECT starId FROM stars_in_movies WHERE stars_in_movies.movieId = \"" + m_id + "\") AS starIds JOIN stars ON starIds.starId = stars.id";
-	                String genres_query = "SELECT name FROM (SELECT genreId FROM genres_in_movies WHERE genres_in_movies.movieId = \"" + m_id + "\") AS genreIds JOIN genres ON genreIds.genreId = genres.id";
+//	                String stars_query = "SELECT name FROM (SELECT starId FROM stars_in_movies WHERE stars_in_movies.movieId = \"" + m_id + "\") AS starIds JOIN stars ON starIds.starId = stars.id";
+//	                String genres_query = "SELECT name FROM (SELECT genreId FROM genres_in_movies WHERE genres_in_movies.movieId = \"" + m_id + "\") AS genreIds JOIN genres ON genreIds.genreId = genres.id";
+
+	                String stars_query = "SELECT name FROM (SELECT starId FROM stars_in_movies WHERE stars_in_movies.movieId = ?) AS starIds JOIN stars ON starIds.starId = stars.id";
+	                String genres_query = "SELECT name FROM (SELECT genreId FROM genres_in_movies WHERE genres_in_movies.movieId = ?) AS genreIds JOIN genres ON genreIds.genreId = genres.id";
 	                
-	                Statement stars_statement = dbcon.createStatement();
-	                Statement genres_statement = dbcon.createStatement();
+	             
+	                PreparedStatement stars_pst = dbcon.prepareStatement(stars_query);
+	                stars_pst.setString(1, m_id);
 	                
-	                ResultSet rs_stars = stars_statement.executeQuery(stars_query);
-	                ResultSet rs_genres = genres_statement.executeQuery(genres_query);
+	                PreparedStatement genres_pst = dbcon.prepareStatement(genres_query);
+	                genres_pst.setString(1, m_id);
+	                
+	                ResultSet rs_stars = stars_pst.executeQuery();
+	                ResultSet rs_genres = genres_pst.executeQuery();
 	                
 	                String m_stars = "";
 	                String m_genres = "";
@@ -153,24 +189,26 @@ public class FullTextSearch extends HttpServlet {
 	                rs_stars.close();
 	                rs_genres.close();
 	                
-	                stars_statement.close();
-	                genres_statement.close();
+	                stars_pst.close();
+	                genres_pst.close();
 	                
 	            }
 	            out.write(moviesArray.toString());
 	            
 	            rs.close();
-	            statement.close();
+	            search_pst.close();
             }
             else {
-            		String searchQuery = "SELECT * FROM stars AS alias WHERE MATCH(name) AGAINST ('" + matchString +"' IN BOOLEAN MODE)";
+//            		String searchQuery = "SELECT * FROM stars AS alias WHERE MATCH(name) AGAINST ('" + matchString +"' IN BOOLEAN MODE)";
             		
-            		Statement statement = dbcon.createStatement();
-            	    ResultSet rs = statement.executeQuery(searchQuery);
+            		String searchStarsQuery = "SELECT * FROM stars AS alias WHERE MATCH(name) AGAINST (? IN BOOLEAN MODE)";
+            		
+            		PreparedStatement search_pst = dbcon.prepareStatement(searchStarsQuery);
+            		search_pst.setString(1, matchString);
+            		
+            	    ResultSet rs = search_pst.executeQuery();
             	    
             	    JsonArray starsArray = new JsonArray();
-            	    
-           
             	    
             	    while (rs.next()) {
             	    		JsonObject starInfo = new JsonObject();
@@ -186,7 +224,7 @@ public class FullTextSearch extends HttpServlet {
             	    out.write(starsArray.toString());
                 
             	    rs.close();
-            	    statement.close();
+            	    search_pst.close();
             }
             dbcon.close();
 			
