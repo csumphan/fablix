@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
-	<item value="/Users/eltonxue/Documents/UCI/UCI Academics/2018 Winter Quarter/CS122B/cs122b-winter18-team-82/Project1/WebContent/WEB-INF/lib" key="org.eclipse.jdt.ui.lastextjar"/>
+	<item value="/Users/eltonxue/Documents/UCI/UCI Academics/2018 Winter Quarter/CS122B/cs122b-winter18-team-82/TomcatPooling/WebContent/WEB-INF/lib" key="org.eclipse.jdt.ui.lastextjar"/>
 	<section name="org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart">
 		<item value="2" key="layout"/>
 		<item value="true" key="group_libraries"/>

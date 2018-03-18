@@ -2,27 +2,27 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="FUCK" key="selection"/>
+		<item value="Prepared" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="prepared"/>
+			<item value="movieString"/>
+			<item value="? in boolean"/>
+			<item value="search_pst"/>
+			<item value="pst"/>
+			<item value="test"/>
+			<item value="Prepared"/>
+			<item value="system"/>
+			<item value="?"/>
+			<item value="prepare"/>
+			<item value="resource"/>
+			<item value="listener"/>
+			<item value="listner"/>
+			<item value="refere"/>
 			<item value="FUCK"/>
-			<item value="System.out.println"/>
-			<item value="connection"/>
-			<item value="verifyutils"/>
-			<item value="split"/>
-			<item value="WHER"/>
-			<item value="as"/>
-			<item value="movielist"/>
-			<item value="servlet"/>
-			<item value="webapp"/>
-			<item value="servlet-map"/>
-			<item value="map"/>
-			<item value=";"/>
-			<item value="web-app"/>
-			<item value="servlet-mapping"/>
 		</list>
 		<list key="replacehistory">
 		</list>
@@ -31,7 +31,7 @@
 		<item value="290" key="DIALOG_WIDTH"/>
 		<item value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont" key="DIALOG_FONT_NAME"/>
 		<item value="409" key="DIALOG_HEIGHT"/>
-		<item value="911" key="DIALOG_X_ORIGIN"/>
-		<item value="160" key="DIALOG_Y_ORIGIN"/>
+		<item value="1143" key="DIALOG_X_ORIGIN"/>
+		<item value="205" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>
