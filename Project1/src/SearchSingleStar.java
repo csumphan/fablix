@@ -43,9 +43,9 @@ public class SearchSingleStar extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String loginUser = "root";
-        String loginPasswd = "cs122bfablix";
-        String loginUrl = "jdbc:mysql://localhost:3306/moviedb";
+//		String loginUser = "root";
+//        String loginPasswd = "cs122bfablix";
+//        String loginUrl = "jdbc:mysql://localhost:3306/moviedb";
         
 		response.setContentType("application/json"); // Response mime type
         

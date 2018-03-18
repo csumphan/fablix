@@ -8,11 +8,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 
 /**
  * Servlet implementation class MovieList
@@ -33,9 +36,9 @@ public class MovieList extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String loginUser = "root";
-        String loginPasswd = "cs122bfablix";
-        String loginUrl = "jdbc:mysql://localhost:3306/moviedb";
+//		String loginUser = "root";
+//        String loginPasswd = "cs122bfablix";
+//        String loginUrl = "jdbc:mysql://localhost:3306/moviedb";
 
         response.setContentType("text/html"); // Response mime type
 
@@ -47,9 +50,27 @@ public class MovieList extends HttpServlet {
 
         try {
             //Class.forName("org.gjt.mm.mysql.Driver");
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
+//            Class.forName("com.mysql.jdbc.Driver").newInstance();
 
-            Connection dbcon = DriverManager.getConnection(loginUrl, loginUser, loginPasswd);
+//            Connection dbcon = DriverManager.getConnection(loginUrl, loginUser, loginPasswd);
+        	
+        		Context initCtx = new InitialContext();
+            if (initCtx == null)
+                out.println("initCtx is NULL");
+
+            Context envCtx = (Context) initCtx.lookup("java:comp/env");
+            if (envCtx == null)
+                out.println("envCtx is NULL");
+            
+            // Look up our data source
+            DataSource ds = (DataSource) envCtx.lookup("jdbc/TestDB");
+            
+            if (ds == null)
+                out.println("ds is null.");
+
+            Connection dbcon = ds.getConnection();
+            if (dbcon == null)
+                out.println("dbcon is null.");
             // Declare our statement
             Statement statement = dbcon.createStatement();
             
