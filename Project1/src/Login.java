@@ -82,7 +82,7 @@ public class Login extends HttpServlet {
                     out.println("envCtx is NULL");
                 
                 // Look up our data source
-                DataSource ds = (DataSource) envCtx.lookup("jdbc/TestDB");
+                DataSource ds = (DataSource) envCtx.lookup("jdbc/ReadDB");
                 
                 if (ds == null)
                     out.println("ds is null.");
