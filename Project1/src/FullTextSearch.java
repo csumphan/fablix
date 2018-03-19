@@ -25,6 +25,11 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import java.sql.PreparedStatement;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+
 
 /**
  * Servlet implementation class FullTextSearch
@@ -49,6 +54,36 @@ public class FullTextSearch extends HttpServlet {
 //		String loginUser = "root";
 //        String loginPasswd = "cs122bfablix";
 //        String loginUrl = "jdbc:mysql://localhost:3306/moviedb";
+		
+		String contextPath = getServletContext().getRealPath("/");
+
+		String xmlFilePath=contextPath+"/query_measurements.txt";
+		
+		FileWriter fileWriter = new FileWriter(xmlFilePath, true);
+		
+		BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+		
+		PrintWriter writer = new PrintWriter(bufferedWriter);
+
+//		file.createNewFile();
+		
+		System.out.println("Absolute Path: " + xmlFilePath);
+//		System.out.println("Canonical Path: " + file.getCanonicalPath());
+//		System.out.println("Path: " + file.getPath());
+		
+		
+//		PrintWriter writer = new PrintWriter(new FileOutputStream(xmlFilePath), true);
+		
+		long TJstartTime;
+		long TJendTime;
+		long TJelapsedTime;
+		
+		long TSstartTime;
+		long TSendTime;
+		long TSelapsedTime;
+		
+		// Time an event in a program to nanosecond precision
+        TJstartTime = System.nanoTime();
         
         response.setContentType("application/json"); // Response mime type
         
@@ -116,6 +151,9 @@ public class FullTextSearch extends HttpServlet {
             if (dbcon == null)
                 out.println("dbcon is null.");
             
+            // Time an event in a program to nanosecond precision
+            TSstartTime = System.nanoTime();
+            
             if (type.getAsString().equals("movie")) {
 	        		String searchQuery = "SELECT * FROM movies JOIN ratings ON movies.id = ratings.movieId";
 	        		searchQuery = "SELECT * FROM (" + searchQuery + ") AS alias WHERE MATCH(title) AGAINST (? IN BOOLEAN MODE)";
@@ -153,8 +191,13 @@ public class FullTextSearch extends HttpServlet {
 	                PreparedStatement genres_pst = dbcon.prepareStatement(genres_query);
 	                genres_pst.setString(1, m_id);
 	                
+	                // Parts to be measured
 	                ResultSet rs_stars = stars_pst.executeQuery();
+	                
+	                
+	                
 	                ResultSet rs_genres = genres_pst.executeQuery();
+	                
 	                
 	                String m_stars = "";
 	                String m_genres = "";
@@ -195,6 +238,7 @@ public class FullTextSearch extends HttpServlet {
 	            }
 	            out.write(moviesArray.toString());
 	            
+	            
 	            rs.close();
 	            search_pst.close();
             }
@@ -226,7 +270,22 @@ public class FullTextSearch extends HttpServlet {
             	    rs.close();
             	    search_pst.close();
             }
+            
+            // End time of the event in a program
+            TSendTime = System.nanoTime();
+            TSelapsedTime = TSendTime - TSstartTime; // elapsed time in nano seconds. Note: print the values in nano seconds
+            
             dbcon.close();
+            
+            // End time of the event in a program
+            TJendTime = System.nanoTime();
+            TJelapsedTime = TJendTime - TJstartTime; // elapsed time in nano seconds. Note: print the values in nano seconds
+            
+            System.out.println(TSelapsedTime + ";" + TJelapsedTime);
+            
+            writer.println(TSelapsedTime + ";" + TJelapsedTime);
+            
+            writer.close();
 			
 		} catch (SQLException ex) {
             while (ex != null) {
