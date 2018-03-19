@@ -83,7 +83,9 @@ public class FullTextSearch extends HttpServlet {
 		long TSelapsedTime;
 		
 		// Time an event in a program to nanosecond precision
-        TJstartTime = System.nanoTime();
+        TSstartTime = System.nanoTime();
+		
+		
         
         response.setContentType("application/json"); // Response mime type
         
@@ -146,13 +148,15 @@ public class FullTextSearch extends HttpServlet {
             
             if (ds == null)
                 out.println("ds is null.");
+            
+            // Time an event in a program to nanosecond precision
+            TJstartTime = System.nanoTime();
 
             Connection dbcon = ds.getConnection();
             if (dbcon == null)
                 out.println("dbcon is null.");
             
-            // Time an event in a program to nanosecond precision
-            TSstartTime = System.nanoTime();
+            
             
             if (type.getAsString().equals("movie")) {
 	        		String searchQuery = "SELECT * FROM movies JOIN ratings ON movies.id = ratings.movieId";
@@ -271,16 +275,16 @@ public class FullTextSearch extends HttpServlet {
             	    search_pst.close();
             }
             
-            // End time of the event in a program
-            TSendTime = System.nanoTime();
-            TSelapsedTime = TSendTime - TSstartTime; // elapsed time in nano seconds. Note: print the values in nano seconds
-            
             dbcon.close();
             
             // End time of the event in a program
             TJendTime = System.nanoTime();
             TJelapsedTime = TJendTime - TJstartTime; // elapsed time in nano seconds. Note: print the values in nano seconds
             
+            // End time of the event in a program
+            TSendTime = System.nanoTime();
+            TSelapsedTime = TSendTime - TSstartTime; // elapsed time in nano seconds. Note: print the values in nano seconds
+         
             System.out.println(TSelapsedTime + ";" + TJelapsedTime);
             
             writer.println(TSelapsedTime + ";" + TJelapsedTime);
@@ -299,7 +303,9 @@ public class FullTextSearch extends HttpServlet {
             return;
         }
 		
-        
+		// End time of the event in a program
+        TSendTime = System.nanoTime();
+        TSelapsedTime = TSendTime - TSstartTime; // elapsed time in nano seconds. Note: print the values in nano seconds
 	}
 
 	/**

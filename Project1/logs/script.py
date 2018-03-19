@@ -1,4 +1,5 @@
-file = open("query_measurements.txt", "r")
+# file = open("single.txt", "r")
+file = open("scaled.txt", "r")
 
 TS_list = []
 TJ_list = []
