@@ -197,9 +197,6 @@ public class FullTextSearch extends HttpServlet {
 	                
 	                // Parts to be measured
 	                ResultSet rs_stars = stars_pst.executeQuery();
-	                
-	                
-	                
 	                ResultSet rs_genres = genres_pst.executeQuery();
 	                
 	                
@@ -303,9 +300,6 @@ public class FullTextSearch extends HttpServlet {
             return;
         }
 		
-		// End time of the event in a program
-        TSendTime = System.nanoTime();
-        TSelapsedTime = TSendTime - TSstartTime; // elapsed time in nano seconds. Note: print the values in nano seconds
 	}
 
 	/**
